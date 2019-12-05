@@ -1,0 +1,34 @@
+{
+  "name": "oli-dapp-skeleton",
+  "version": "1.0.0",
+  "description": "Initial skeleton for building decentralized applications with Vue.js and the Ethereum netwrok",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test --network volta",
+    "migrate": "truffle migrate --reset --network volta"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olisystems/oli-dapp-skeleton.git"
+  },
+  "keywords": [
+    "Ethereum",
+    "Solidity",
+    "Smart Contracts",
+    "Truffle",
+    "Vue.js"
+  ],
+  "author": "Muhammad Yahya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olisystems/oli-dapp-skeleton/issues"
+  },
+  "homepage": "https://github.com/olisystems/oli-dapp-skeleton#readme",
+  "devDependencies": {
+    "truffle-hdwallet-provider": "^1.0.17",
+    "web3-provider-engine": "^15.0.4"
+  }
+}
