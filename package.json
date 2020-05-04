@@ -9,7 +9,8 @@
   "scripts": {
     "test": "truffle test --network volta",
     "migrate": "truffle migrate --reset --network volta",
-    "ganache": "ganache-cli -m 'write burger twin nation increase copper behind urge damage ivory recycle lock'"
+    "ganache": "ganache-cli -m 'write burger twin nation increase copper behind urge damage ivory recycle lock'",
+    "prettier": "prettier --write **/*.sol"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,8 @@
   },
   "homepage": "https://github.com/olisystems/oli-dapp-skeleton#readme",
   "devDependencies": {
+    "prettier": "^2.0.5",
+    "prettier-plugin-solidity": "^1.0.0-alpha.49",
     "truffle-hdwallet-provider": "^1.0.17",
     "web3-provider-engine": "^15.0.4"
   }
