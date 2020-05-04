@@ -1,27 +1,28 @@
 # OLI DApp Skeleton
-Initial skeleton for building decentralized applications with Vue.js and the Ethereum netwrok 
 
-<!-- vscode-markdown-toc -->
-* 1. [ Description](#Description)
-* 2. [ Getting Started](#GettingStarted)
-	* 2.1. [ Prerequisites](#Prerequisites)
-	* 2.2. [ Installing](#Installing)
-* 3. [ Built With](#BuiltWith)
-* 4. [ Contributing](#Contributing)
+Initial skeleton for building decentralized applications with Vue.js and the Ethereum netwrok
 
-<!-- vscode-markdown-toc-config
-	numbering=true
-	autoSave=true
-	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-##  1. <a name='Description'></a> Description
+- [OLI DApp Skeleton](#oli-dapp-skeleton)
+	- [1. Description](#1-description)
+	- [2. Getting Started](#2-getting-started)
+		- [2.1. Prerequisites](#21-prerequisites)
+		- [2.2. Installing](#22-installing)
+	- [3. Built With](#3-built-with)
+	- [4. Contributing](#4-contributing)
+
+<!-- /TOC -->
+## 1. Description
+
 This is starter code for building decentralized applications with Vue.js on the top Ethereum netwrok.
 
-##  2. <a name='GettingStarted'></a> Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
+## 2. Getting Started
 
-###  2.1. <a name='Prerequisites'></a> Prerequisites
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### 2.1. Prerequisites
+
 Please make sure you've already installed Truffle and enabled MetaMask extension in your browser.
 
 ```
@@ -31,51 +32,79 @@ Please make sure you've already installed Truffle and enabled MetaMask extension
 * Web3.js >= v1.2.1
 ```
 
-###  2.2. <a name='Installing'></a> Installing
+### 2.2. Installing
+
 Follow the steps below to have development environment running:
+
 1. Clone the repository:
+
 ```
 git clone https://github.com/olisystems/oli-dapp-skeleton.git
 ```
 
-2. Change directory to `app` folder and install all requisite npm packages (as listed in `package.json`):
+2. Change directory to `oli-dapp-skeleton` folder and install all requisite npm packages (as listed in `package.json`):
+
 ```
-cd app
+cd oli-dapp-skeleton
 npm install
 ```
+
 3. Compile the smart contracts:
+
 ```
 truffle compile
 ```
+
 This will create the smart contract artifacts in folder `src\assets\js\contracts`.
 
 4. Migrate smart contracts to `volta` chain:
+
 ```
 npm run migrate
 ```
 
+Alternatively, migrate the contracts to the locally running `ganache`:
+
+```
+npm run ganache
+
+truffle migrate
+```
+
 5. Test smart contracts:
+
 ```
 npm run test
 ```
 
+or
+
+```
+truffle test
+```
+
 6. Compiles and hot-reloads for development, run the following command inside `app` directory:
+
 ```
 npm run serve
 ```
+
 Navigate to `localhost:8080` in your browser.
 
 7. Compiles and minifies for production:
+
 ```
 npm run build
 ```
 
-##  3. <a name='BuiltWith'></a> Built With
-* [Ethereum](https://www.ethereum.org/) - Ethereum is a decentralized platform that runs smart contracts to make the web faster, safer, and more open.
-* [Truffle Framework](http://truffleframework.com/) - Truffle is the most popular development framework for Ethereum with a mission to make your life a whole lot easier.
-* [Vue.js](https://vuejs.org/) - The Progressive JavaScript Framework for building user interfaces.
+## 3. Built With
 
-##  4. <a name='Contributing'></a> Contributing
+- [Ethereum](https://www.ethereum.org/) - Ethereum is a decentralized platform that runs smart contracts to make the web faster, safer, and more open.
+- [Truffle Framework](http://truffleframework.com/) - Truffle is the most popular development framework for Ethereum with a mission to make your life a whole lot easier.
+- [Vue.js](https://vuejs.org/) - The Progressive JavaScript Framework for building user interfaces.
+
+## 4. Contributing
+
 Pull requests are welcome.
 
 1. Fork the repository.
