@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "truffle test --network volta",
-    "migrate": "truffle migrate --reset --network volta"
+    "migrate": "truffle migrate --reset --network volta",
+    "ganache": "ganache-cli -m 'write burger twin nation increase copper behind urge damage ivory recycle lock'"
   },
   "repository": {
     "type": "git",
