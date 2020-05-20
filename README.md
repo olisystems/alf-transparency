@@ -1,51 +1,59 @@
-# OLI DApp Skeleton
+# ALF Transparency
 
-Initial skeleton for building decentralized applications with Vue.js and the Ethereum netwrok
+[![Build Status](https://travis-ci.org/olisystems/alf-transparency.svg?branch=master)](https://travis-ci.org/olisystems/alf-transparency)
 
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+Implements Hashing-Dashboard on the basis of the ALF Flex Market with Vue.js and the Ethereum netwrok
 
-- [OLI DApp Skeleton](#oli-dapp-skeleton)
-	- [1. Description](#1-description)
-	- [2. Getting Started](#2-getting-started)
-		- [2.1. Prerequisites](#21-prerequisites)
-		- [2.2. Installing](#22-installing)
-	- [3. Built With](#3-built-with)
-	- [4. Contributing](#4-contributing)
+## Table of Contents
 
-<!-- /TOC -->
-## 1. Description
+<!-- MDTOC maxdepth:6 firsth1:0 numbering:1 flatten:0 bullets:0 updateOnSave:1 -->
 
-This is starter code for building decentralized applications with Vue.js on the top Ethereum netwrok.
+1. [Table of Contents](#table-of-contents)   
+2. [Description](#description)   
+3. [Getting Started](#getting-started)   
+&emsp;3.1. [Prerequisites](#prerequisites)   
+&emsp;3.2. [Installing](#installing)   
+4. [Built With](#built-with)   
+5. [Contributing](#contributing)   
 
-## 2. Getting Started
+<!-- /MDTOC -->
+
+## Description
+
+The current project creates hashes of the given document using [web3 sha3](https://web3js.readthedocs.io/en/v1.2.7/web3-utils.html#sha3) function and stores them on [Volta](https://energyweb.atlassian.net/wiki/spaces/EWF/pages/702677023/Chain%3A+Volta+Test+Network) test network.
+
+## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### 2.1. Prerequisites
+### Prerequisites
 
-Please make sure you've already installed Truffle and enabled MetaMask extension in your browser.
+Please make sure you've already installed Truffle and enabled the MetaMask extension in your browser.
 
 ```
-* Truffle v5.0.41 (core: 5.0.41)
-* Solidity >= v0.5.8 (solc-js)
-* Node >= v10.16.3
-* Web3.js >= v1.2.1
+* Truffle v5.1.26 (core: 5.1.26)
+* Solidity >= v0.5.16 (solc-js)
+* Node >= v12.16.3
+* Web3.js >= v1.2.7
+* Metamask Chrome extension (connected with Volta)
 ```
 
-### 2.2. Installing
+Note: Please follow the [steps](https://energyweb.atlassian.net/wiki/spaces/EWF/pages/703201459/Volta+Connecting+to+Remote+RPC+and+Metamask) to connect Metamask with Volta.
+
+### Installing
 
 Follow the steps below to have development environment running:
 
 1. Clone the repository:
 
 ```
-git clone https://github.com/olisystems/oli-dapp-skeleton.git
+git clone https://github.com/olisystems/alf-transparency.git
 ```
 
-2. Change directory to `oli-dapp-skeleton` folder and install all requisite npm packages (as listed in `package.json`):
+2. Change directory to `alf-transparency` folder and install all requisite npm packages (as listed in `package.json`):
 
 ```
-cd oli-dapp-skeleton
+cd alf-transparency
 npm install
 ```
 
@@ -55,7 +63,7 @@ npm install
 truffle compile
 ```
 
-This will create the smart contract artifacts in folder `src\assets\js\contracts`.
+This will create the smart contract artifacts in folder `app\src\assets\js\contracts`.
 
 4. Migrate smart contracts to `volta` chain:
 
@@ -71,15 +79,25 @@ npm run ganache
 truffle migrate
 ```
 
+Optionally, you can use the following command to export contract deployment details in a text file.
+
+```
+truffle migrate -a | tee -a ./output.txt
+```
+
 5. Test smart contracts:
+
+Run tests on Volta network:
 
 ```
 npm run test
 ```
 
-or
+or run tests on `Ganache`
 
 ```
+npm run ganache
+
 truffle test
 ```
 
@@ -97,13 +115,14 @@ Navigate to `localhost:8080` in your browser.
 npm run build
 ```
 
-## 3. Built With
+## Built With
 
 - [Ethereum](https://www.ethereum.org/) - Ethereum is a decentralized platform that runs smart contracts to make the web faster, safer, and more open.
 - [Truffle Framework](http://truffleframework.com/) - Truffle is the most popular development framework for Ethereum with a mission to make your life a whole lot easier.
 - [Vue.js](https://vuejs.org/) - The Progressive JavaScript Framework for building user interfaces.
+- [Web3.js](https://web3js.readthedocs.io/en/v1.2.7/#web3-js-ethereum-javascript-api) - A collection of libraries which allow interacting with a local or remote ethereum node, using an HTTP or IPC connection.
 
-## 4. Contributing
+## Contributing
 
 Pull requests are welcome.
 
