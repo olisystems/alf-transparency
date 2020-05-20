@@ -31,8 +31,8 @@
   "homepage": "https://github.com/olisystems/oli-dapp-skeleton#readme",
   "devDependencies": {
     "prettier": "^2.0.5",
-    "prettier-plugin-solidity": "^1.0.0-alpha.49",
+    "prettier-plugin-solidity": "^1.0.0-alpha.51",
     "truffle-hdwallet-provider": "^1.0.17",
-    "web3-provider-engine": "^15.0.4"
+    "web3-provider-engine": "^15.0.7"
   }
 }
