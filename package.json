@@ -1,7 +1,7 @@
 {
-  "name": "oli-dapp-skeleton",
+  "name": "alf-transparency",
   "version": "1.0.0",
-  "description": "Initial skeleton for building decentralized applications with Vue.js and the Ethereum netwrok",
+  "description": "Implements Hashing-Dashboard on the basis of the ALF Flex Market with Vue.js and the Ethereum netwrok",
   "main": "truffle-config.js",
   "directories": {
     "test": "test"
@@ -10,29 +10,38 @@
     "test": "truffle test --network volta",
     "migrate": "truffle migrate --reset --network volta",
     "ganache": "ganache-cli -m 'write burger twin nation increase copper behind urge damage ivory recycle lock'",
-    "prettier": "prettier --write **/*.sol"
+    "prettier": "prettier --write **/*.sol",
+    "coverage": "npx truffle run coverage"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/olisystems/oli-dapp-skeleton.git"
+    "url": "git+https://github.com/olisystems/alf-transparency.git"
   },
   "keywords": [
     "Ethereum",
     "Solidity",
     "Smart Contracts",
     "Truffle",
-    "Vue.js"
+    "Vue.js",
+    "hash",
+    "Volta"
   ],
-  "author": "Muhammad Yahya",
+  "author": "Muhammad Yahya @ OLI Systems",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/olisystems/oli-dapp-skeleton/issues"
+    "url": "https://github.com/olisystems/alf-transparency/issues"
   },
-  "homepage": "https://github.com/olisystems/oli-dapp-skeleton#readme",
+  "homepage": "https://github.com/olisystems/alf-transparency#readme",
   "devDependencies": {
+    "@truffle/hdwallet-provider": "^1.0.35",
+    "openzeppelin-solidity": "^3.0.1",
     "prettier": "^2.0.5",
     "prettier-plugin-solidity": "^1.0.0-alpha.51",
-    "truffle-hdwallet-provider": "^1.0.17",
+    "solidity-coverage": "^0.7.5",
+    "truffle-assertions": "^0.9.2",
     "web3-provider-engine": "^15.0.7"
+  },
+  "dependencies": {
+    "truffle": "^5.1.26"
   }
 }
