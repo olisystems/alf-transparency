@@ -1,40 +1,47 @@
-
-const HDWalletProvider = require('truffle-hdwallet-provider');
-const NonceTrackerSubprovider = require("web3-provider-engine/subproviders/nonce-tracker")
-const fs = require('fs');
-const path = require('path');
+const HDWalletProvider = require("@truffle/hdwallet-provider");
+const NonceTrackerSubprovider = require("web3-provider-engine/subproviders/nonce-tracker");
+const fs = require("fs");
+const path = require("path");
 const MNEMONIC = fs.readFileSync(".mnemonic").toString().trim();
 var ENDPOINT = "https://volta-rpc.energyweb.org";
 module.exports = {
-
   // custom path for smart contracts metadata
-  contracts_build_directory: path.join(__dirname, 'app/src/assets/js/contracts'),
+  contracts_build_directory: path.join(
+    __dirname,
+    "app/src/assets/js/contracts"
+  ),
 
   networks: {
-
     development: {
       host: "127.0.0.1",
       port: 8545,
       network_id: "*",
-      websockets: true
+      websockets: true,
     },
 
     volta: {
       provider: function () {
         const wallet = new HDWalletProvider(MNEMONIC, ENDPOINT);
-        const nonceTracker = new NonceTrackerSubprovider()
-        wallet.engine._providers.unshift(nonceTracker)
-        nonceTracker.setEngine(wallet.engine)
-        return wallet
+        const nonceTracker = new NonceTrackerSubprovider();
+        wallet.engine._providers.unshift(nonceTracker);
+        nonceTracker.setEngine(wallet.engine);
+        return wallet;
       },
-      network_id: 73799
-    }
-
+      network_id: 73799,
+    },
   },
 
+  plugins: ["solidity-coverage"],
   compilers: {
     solc: {
-      // version: "0.5.1",
-    }
-  }
-}
+      version: "0.6.0",
+    },
+  },
+  // mocha: {
+  //   reporter: "eth-gas-reporter",
+  //   reporterOptions: {
+  //     excludeContracts: ["Migrations"],
+  //     url: "https://volta-rpc.energyweb.org",
+  //   },
+  // },
+};
