@@ -34,6 +34,7 @@
   "homepage": "https://github.com/olisystems/alf-transparency#readme",
   "devDependencies": {
     "@truffle/hdwallet-provider": "^1.0.35",
+    "eth-gas-reporter": "^0.2.17",
     "openzeppelin-solidity": "^3.0.1",
     "prettier": "^2.0.5",
     "prettier-plugin-solidity": "^1.0.0-alpha.51",
