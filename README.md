@@ -13,8 +13,9 @@ Implements Hashing-Dashboard on the basis of the ALF Flex Market with Vue.js and
 3. [Getting Started](#getting-started)   
 &emsp;3.1. [Prerequisites](#prerequisites)   
 &emsp;3.2. [Installing](#installing)   
-4. [Built With](#built-with)   
-5. [Contributing](#contributing)   
+4. [Code Coverage](#code-coverage)   
+5. [Built With](#built-with)   
+6. [Contributing](#contributing)   
 
 <!-- /MDTOC -->
 
@@ -101,6 +102,31 @@ npm run ganache
 truffle test
 ```
 
+The following output shows the test results and estimated gas cost for each function execution:
+
+```sh
+Contract: ALFTransparency
+    ✓ should send the hash (28399 gas)
+    ✓ should fail to send the hash from a consumer account (24945 gas)
+
+·---------------------------------------|----------------------------|-------------|----------------------------·
+|  Solc version: 0.6.0+commit.26b70077  ·  Optimizer enabled: false  ·  Runs: 200  ·  Block limit: 6721975 gas  │
+········································|····························|·············|·····························
+|  Methods                                                                                                      │
+························|···············|··············|·············|·············|··············|··············
+|  Contract             ·  Method       ·  Min         ·  Max        ·  Avg        ·  # calls     ·  eur (avg)  │
+························|···············|··············|·············|·············|··············|··············
+|  ALFTransparency      ·  sendHash     ·           -  ·          -  ·      28399  ·           2  ·          -  │
+························|···············|··············|·············|·············|··············|··············
+|  Deployments                          ·                                          ·  % of limit  ·             │
+········································|··············|·············|·············|··············|··············
+|  ALFTransparency                      ·           -  ·          -  ·     330322  ·       4.9 %  ·          -  │
+·---------------------------------------|--------------|-------------|-------------|--------------|-------------·
+
+  2 passing (1s)
+
+```
+
 6. Compiles and hot-reloads for development, run the following command inside `app` directory:
 
 ```
@@ -115,6 +141,28 @@ Navigate to `localhost:8080` in your browser.
 npm run build
 ```
 
+## Code Coverage
+
+Solidity-coverage is used to determine the code coverage of smart contract.
+
+```sh
+  Contract: ALFTransparency
+    ✓ should send the hash (77ms)
+    ✓ should fail to send the hash from a consumer account (89ms)
+
+
+  2 passing (212ms)
+
+----------------------|----------|----------|----------|----------|----------------|
+File                  |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
+----------------------|----------|----------|----------|----------|----------------|
+ contracts/           |      100 |      100 |      100 |      100 |                |
+  ALFTransparency.sol |      100 |      100 |      100 |      100 |                |
+----------------------|----------|----------|----------|----------|----------------|
+All files             |      100 |      100 |      100 |      100 |                |
+----------------------|----------|----------|----------|----------|----------------|
+
+```
 ## Built With
 
 - [Ethereum](https://www.ethereum.org/) - Ethereum is a decentralized platform that runs smart contracts to make the web faster, safer, and more open.
