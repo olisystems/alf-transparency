@@ -1,6 +1,6 @@
-const SampleContract = artifacts.require("SampleContract");
+const ALFTransparency = artifacts.require("ALFTransparency");
 
 module.exports = function (deployer) {
 
-    deployer.deploy(SampleContract);
+    deployer.deploy(ALFTransparency);
 };
