@@ -23,6 +23,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "jquery": "^3.5.1",
     "prettier": "^2.0.5",
+    "v-tooltip": "^3.0.0-alpha.13",
     "vue-template-compiler": "^2.6.11",
     "web3": "^1.2.7"
   }

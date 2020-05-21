@@ -3,7 +3,7 @@
     <div class="bar">
       <div>
         <p>Contract Owner</p>
-        <h4 class="address">{{ owner }}</h4>
+        <h4 class="address" v-tooltip="owner">{{ owner }}</h4>
       </div>
       <div>
         <p>Contract Created</p>
@@ -40,7 +40,7 @@
           alt="spinner by loading.io"
           class="miner-loader"
         />
-        <h4 class="address">{{ miner }}</h4>
+        <h4 class="address" v-tooltip="miner">{{ miner }}</h4>
       </div>
     </div>
   </div>
