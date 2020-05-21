@@ -23,4 +23,13 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #333;
+  background-color: #f3f3f3;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
 </style>
