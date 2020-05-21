@@ -3,6 +3,11 @@
     <div class="bar">
       <div>
         <p>Contract Owner</p>
+        <img
+          src="../assets/img/loader.svg"
+          alt="spinner by loading.io"
+          class="owner-loader"
+        />
         <h4 class="address" v-tooltip="owner">{{ owner }}</h4>
       </div>
       <div>
@@ -27,12 +32,10 @@
         />
         <h4>{{ currentBlock }}</h4>
       </div>
-
       <div>
         <p>Gas Price [Gwei]</p>
         <h4>18</h4>
       </div>
-
       <div>
         <p>Last Miner</p>
         <img
@@ -65,6 +68,7 @@ export default {
   methods: {
     async getOwner() {
       this.owner = await this.contract.methods.owner().call();
+      $(".owner-loader").hide();
     },
 
     async getContractCreationTime() {
@@ -119,6 +123,10 @@ export default {
   overflow: hidden;
 }
 
+p {
+  font-size: calc(0.5vw + 0.5vh + 0.5vmin);
+}
+
 img {
   width: 2rem;
   height: 2rem;
@@ -128,7 +136,7 @@ h4 {
   font-size: calc(0.6vw + 0.6vh + 0.6vmin);
   margin-bottom: 0.7rem 0;
   /* color: #f6851b; */
-  color: #152128;
+  color: #914343fd;
 }
 
 .address {
@@ -137,7 +145,40 @@ h4 {
   white-space: nowrap;
 }
 
-p {
-  font-size: calc(0.5vw + 0.5vh + 0.5vmin);
+@media only screen and (max-width: 1000px) {
+  .bar {
+    flex-direction: column;
+  }
+
+  .bar > div {
+    overflow: visible;
+  }
+
+  .bar > div:after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    border-bottom: 1px solid rgb(255, 140, 0);
+  }
+
+  .bar > div:last-child::after {
+    border-bottom: none;
+  }
+
+  p {
+    font-size: calc(0.7vw + 0.7vh + 1.2vmin);
+  }
+
+  h4 {
+    font-size: calc(0.7vw + 0.7vh + 0.7vmin);
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  img {
+    width: calc(1.2vw + 1.2vh + 1.5vmin);
+    height: calc(1.2vw + 1.2vh + 1.5vmin);
+  }
 }
 </style>
