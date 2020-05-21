@@ -1,5 +1,21 @@
 <template>
-  <div class="main"></div>
+  <div class="main">
+    <div class="container">
+      <form @submit.prevent="sendHash" class="search-bar">
+        <select v-model="hashType" required>
+          <option disabled value>Please select one</option>
+          <option>Supply Hash</option>
+          <option>Demand Hash</option>
+          <option>Effectivity Matrix</option>
+          <option>Request Hash</option>
+          <option>Delivery Hash</option>
+        </select>
+        <button type="submit">Send</button>
+      </form>
+
+      <p>These are the hashes currently stored on Volta.</p>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -14,6 +30,7 @@ export default {
     return {
       account: "",
       contract: "",
+      hashType: "",
     };
   },
 
@@ -30,7 +47,20 @@ export default {
 
     async queryDatabase() {
       let res = await getData();
-      console.log(res+Date.now());
+      //console.log(res + Date.now());
+    },
+
+    async sendHash() {
+      let res = await getData();
+      let time = Date.now();
+      let doc = res + time;
+
+      this.contract.methods
+        .sendHash(doc, this.hashType, time)
+        .send({ from: this.account }, function (error, transactionHash) {
+          console.log(transactionHash);
+        });
+      this.hashType = "";
     },
   },
 
@@ -43,4 +73,43 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+.main {
+  margin: 3rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container {
+  width: 60%;
+  background: #fff;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+select {
+  border: 0;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1em;
+  color: white;
+  background-color: #5f6363;
+}
+
+.search-bar > button {
+  border: 0;
+  padding: 1rem;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  text-transform: uppercase;
+  color: white;
+  background-color: #323333;
+}
+</style>
