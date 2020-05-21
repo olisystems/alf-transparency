@@ -5,7 +5,8 @@
 <script>
 import web3 from "@/assets/js/web3";
 import alfTransparencyContract from "@/assets/js/contractInstance";
-
+import getData from "@/assets/js/server";
+import axios from "axios";
 export default {
   name: "Hashes",
 
@@ -26,11 +27,17 @@ export default {
         this.account = res[0];
       });
     },
+
+    async queryDatabase() {
+      let res = await getData();
+      console.log(res+Date.now());
+    },
   },
 
   async created() {
     this.getMetamaskAccount();
     this.contract = await alfTransparencyContract();
+    this.queryDatabase();
   },
 };
 </script>
