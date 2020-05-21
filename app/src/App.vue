@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <HelloWorld />
+    <Hashes />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Hashes from "./components/Hashes.vue";
 
 export default {
   name: "app",
   components: {
-    HelloWorld
-  }
+    Hashes,
+  },
 };
 </script>
 
@@ -22,6 +22,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #333;
+  background-color: #f3f3f3;
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 </style>
