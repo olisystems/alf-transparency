@@ -292,7 +292,7 @@ h4 {
 .doc-type {
   margin: 0;
   padding: 0;
-  height: 255px;
+  height: 315px;
   overflow-y: auto;
   list-style-type: none;
   text-align: left;
@@ -327,7 +327,7 @@ h4 {
 }
 
 .table {
-  height: 255px;
+  height: 315px;
   overflow-y: auto;
 }
 
