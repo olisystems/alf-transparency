@@ -331,6 +331,12 @@ h4 {
   overflow-y: auto;
 }
 
+.table-wrapper {
+  border: 1px solid #dee2e6;
+  margin: 0.5rem;
+  border-radius: 2px;
+}
+
 .table table {
   table-layout: fixed;
   width: 100%;
