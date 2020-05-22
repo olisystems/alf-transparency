@@ -50,6 +50,7 @@
 </template>
 <script>
 const $ = require("jquery");
+import convertUnix from "@/assets/js/utils";
 import web3 from "@/assets/js/web3";
 import alfTransparencyContract from "@/assets/js/contractInstance";
 export default {
@@ -72,7 +73,8 @@ export default {
     },
 
     async getContractCreationTime() {
-      this.creationTime = await this.contract.methods.creationTime().call();
+      let timestamp = await this.contract.methods.creationTime().call();
+      this.creationTime = convertUnix(timestamp);
       $(".time-loader").hide();
     },
 
