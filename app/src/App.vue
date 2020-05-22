@@ -1,15 +1,18 @@
 <template>
   <div id="app">
+    <Stats />
     <Hashes />
   </div>
 </template>
 
 <script>
 import Hashes from "./components/Hashes.vue";
+import Stats from "./components/Stats.vue";
 
 export default {
   name: "app",
   components: {
+    Stats,
     Hashes,
   },
 };
