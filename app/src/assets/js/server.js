@@ -1,6 +1,6 @@
 const axios = require("axios");
 const url =
-  "https://cors-anywhere.herokuapp.com/http://80.158.4.115:9000/api/connectors";
+  "http://80.158.4.115:9000/api/connectors";
 
 const auth = {
   username: "cpo_admin",
