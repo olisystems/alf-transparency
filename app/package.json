@@ -25,6 +25,7 @@
     "prettier": "^2.0.5",
     "v-tooltip": "^3.0.0-alpha.13",
     "vue-template-compiler": "^2.6.11",
+    "vuejs-smart-table": "0.0.5",
     "web3": "^1.2.7"
   }
 }
