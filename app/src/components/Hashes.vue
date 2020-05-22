@@ -14,11 +14,11 @@
         <button type="submit">Send</button>
       </form>
 
-      <ul class="hash-list">
-        <li v-for="(data, index) in hashesHistory" v-bind:key="index">
+      <transition-group name="list" tag="ul" class="hash-list">
+        <li v-for="data in hashesHistory" v-bind:key="data.timestamp">
           {{ data.hash }} | {{ data.docType }} | {{ data.timestamp }}
         </li>
-      </ul>
+      </transition-group>
       <!-- <p>These are the hashes currently stored on Volta.</p> -->
     </div>
 
@@ -387,5 +387,20 @@ tbody > tr:last-child > td {
 
 span {
   color: #914343fd;
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s ease-in-out;
+}
+
+.list-enter /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
+  background-color: #a7e795;
+}
+
+.list-move {
+  transition: transform 1s;
 }
 </style>
