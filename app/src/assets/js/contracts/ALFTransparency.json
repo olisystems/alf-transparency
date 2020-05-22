@@ -1365,12 +1365,12 @@
         }
       },
       "links": {},
-      "address": "0x14415fC49FB1863519239b9f51329c7E2994F58a",
-      "transactionHash": "0xec45c8d68feffe8b289d80b8bdf6bbac96576eed36bae51fd124c1e2aa1e8a40"
+      "address": "0x3a0539Cc77dfCb22859a92a6abF0a8ec12DC4660",
+      "transactionHash": "0x862069ebfeeac7c4273f9a39107ac77987c57e52df0a45c1324a3f46e1f1f0fa"
     }
   },
   "schemaVersion": "3.1.0",
-  "updatedAt": "2020-05-21T12:58:51.265Z",
+  "updatedAt": "2020-05-22T12:16:00.521Z",
   "networkType": "ethereum",
   "devdoc": {
     "author": "Muhammad Yahya @OLI Systems GmbH",
