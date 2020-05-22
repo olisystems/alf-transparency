@@ -85,6 +85,7 @@ import web3 from "@/assets/js/web3";
 import alfTransparencyContract from "@/assets/js/contractInstance";
 import getData from "@/assets/js/server";
 import axios from "axios";
+import convertUnix from "@/assets/js/utils";
 export default {
   name: "Hashes",
 
@@ -113,7 +114,7 @@ export default {
 
     async sendHash() {
       let res = await getData();
-      let time = Date.now();
+      let time = Math.floor(Date.now() / 1000);
       let doc = res + time;
 
       doc = web3.utils.sha3(doc);
@@ -136,7 +137,7 @@ export default {
           this.hashesHistory.unshift({
             hash: event.returnValues.docHash,
             docType: event.returnValues.docType,
-            timestamp: event.returnValues.timestamp,
+            timestamp: convertUnix(event.returnValues.timestamp),
           });
 
           // build key value pair
@@ -149,11 +150,13 @@ export default {
             this.hashes.push({
               docType: event.returnValues.docType,
               hash: [event.returnValues.docHash],
-              timestamp: [event.returnValues.timestamp],
+              timestamp: [convertUnix(event.returnValues.timestamp)],
             });
           } else {
             this.hashes[index].hash.push(event.returnValues.docHash);
-            this.hashes[index].timestamp.push(event.returnValues.timestamp);
+            this.hashes[index].timestamp.push(
+              convertUnix(event.returnValues.timestamp)
+            );
           }
         })
         .on("error", console.error);
@@ -172,7 +175,7 @@ export default {
             if (this.docType == event.returnValues.docType) {
               this.currentHashType.unshift({
                 hash: event.returnValues.docHash,
-                timestamp: event.returnValues.timestamp,
+                timestamp: convertUnix(event.returnValues.timestamp),
               });
             }
           });
