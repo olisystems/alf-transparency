@@ -3,10 +3,12 @@
   "abi": [
     {
       "inputs": [],
+      "payable": false,
       "stateMutability": "nonpayable",
       "type": "constructor"
     },
     {
+      "constant": true,
       "inputs": [],
       "name": "last_completed_migration",
       "outputs": [
@@ -16,11 +18,12 @@
           "type": "uint256"
         }
       ],
+      "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
+      "constant": true,
       "inputs": [],
       "name": "owner",
       "outputs": [
@@ -30,11 +33,12 @@
           "type": "address"
         }
       ],
+      "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
+      "constant": false,
       "inputs": [
         {
           "internalType": "uint256",
@@ -44,10 +48,12 @@
       ],
       "name": "setCompleted",
       "outputs": [],
+      "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
+      "constant": false,
       "inputs": [
         {
           "internalType": "address",
@@ -57,15 +63,16 @@
       ],
       "name": "upgrade",
       "outputs": [],
+      "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.0+commit.26b70077\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"last_completed_migration\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"completed\",\"type\":\"uint256\"}],\"name\":\"setCompleted\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"new_address\",\"type\":\"address\"}],\"name\":\"upgrade\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/yahya/Documents/GitHub/alf-transparency/contracts/Migrations.sol\":\"Migrations\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/yahya/Documents/GitHub/alf-transparency/contracts/Migrations.sol\":{\"keccak256\":\"0xb3d917d7b7ff4f32c71ec4391dfbd46f5070d1e922a92d6f8c22507e035a84d5\",\"urls\":[\"bzz-raw://c51d624016df13d49b6e940eefd13a89f85a14aa9cc20331f4280c1833592528\",\"dweb:/ipfs/QmYu9Mmniny5GYD42h9WiqedBFrtmvaxfdWJ8uDhn7PzSU\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506102b8806100606000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c80630900f01014610051578063445df0ac146100955780638da5cb5b146100b3578063fdacd576146100fd575b600080fd5b6100936004803603602081101561006757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061012b565b005b61009d6101f7565b6040518082815260200191505060405180910390f35b6100bb6101fd565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101296004803603602081101561011357600080fd5b8101908080359060200190929190505050610222565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156101f45760008190508073ffffffffffffffffffffffffffffffffffffffff1663fdacd5766001546040518263ffffffff1660e01b815260040180828152602001915050600060405180830381600087803b1580156101da57600080fd5b505af11580156101ee573d6000803e3d6000fd5b50505050505b50565b60015481565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141561027f57806001819055505b5056fea2646970667358221220e1b6b9f92237d7af67146806af3329644aff0e63c9650c8c23108e98a390396564736f6c63430006000033",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c80630900f01014610051578063445df0ac146100955780638da5cb5b146100b3578063fdacd576146100fd575b600080fd5b6100936004803603602081101561006757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061012b565b005b61009d6101f7565b6040518082815260200191505060405180910390f35b6100bb6101fd565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101296004803603602081101561011357600080fd5b8101908080359060200190929190505050610222565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156101f45760008190508073ffffffffffffffffffffffffffffffffffffffff1663fdacd5766001546040518263ffffffff1660e01b815260040180828152602001915050600060405180830381600087803b1580156101da57600080fd5b505af11580156101ee573d6000803e3d6000fd5b50505050505b50565b60015481565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141561027f57806001819055505b5056fea2646970667358221220e1b6b9f92237d7af67146806af3329644aff0e63c9650c8c23108e98a390396564736f6c63430006000033",
-  "sourceMap": "34:526:1:-:0;;;132:56;8:9:-1;5:2;;;30:1;27;20:12;5:2;132:56:1;171:10;163:5;;:18;;;;;;;;;;;;;;;;;;34:526;;;;;;",
-  "deployedSourceMap": "34:526:1:-:0;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;34:526:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;383:175;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;383:175:1;;;;;;;;;;;;;;;;;;;:::i;:::-;;86:39;;;:::i;:::-;;;;;;;;;;;;;;;;;;;60:20;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;265:112;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;265:112:1;;;;;;;;;;;;;;;;;:::i;:::-;;383:175;244:5;;;;;;;;;;;230:19;;:10;:19;;;226:26;;;449:19:::1;482:11;449:45;;504:8;:21;;;526:24;;504:47;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27::::0;20:12:::1;5:2;504:47:1;;;;8:9:-1;5:2;;;45:16;42:1;39::::0;24:38:::1;77:16;74:1;67:27;5:2;504:47:1;;;;251:1;226:26:::0;383:175;:::o;86:39::-;;;;:::o;60:20::-;;;;;;;;;;;;;:::o;265:112::-;244:5;;;;;;;;;;;230:19;;:10;:19;;;226:26;;;361:9:::1;334:24;:36;;;;226:26:::0;265:112;:::o",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":true,\"inputs\":[],\"name\":\"last_completed_migration\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"completed\",\"type\":\"uint256\"}],\"name\":\"setCompleted\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"new_address\",\"type\":\"address\"}],\"name\":\"upgrade\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/yahya/Documents/GitHub/alf-transparency/contracts/Migrations.sol\":\"Migrations\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/yahya/Documents/GitHub/alf-transparency/contracts/Migrations.sol\":{\"keccak256\":\"0xb3d917d7b7ff4f32c71ec4391dfbd46f5070d1e922a92d6f8c22507e035a84d5\",\"urls\":[\"bzz-raw://c51d624016df13d49b6e940eefd13a89f85a14aa9cc20331f4280c1833592528\",\"dweb:/ipfs/QmYu9Mmniny5GYD42h9WiqedBFrtmvaxfdWJ8uDhn7PzSU\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506102b7806100606000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c80630900f01014610051578063445df0ac146100955780638da5cb5b146100b3578063fdacd576146100fd575b600080fd5b6100936004803603602081101561006757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061012b565b005b61009d6101f7565b6040518082815260200191505060405180910390f35b6100bb6101fd565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101296004803603602081101561011357600080fd5b8101908080359060200190929190505050610222565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156101f45760008190508073ffffffffffffffffffffffffffffffffffffffff1663fdacd5766001546040518263ffffffff1660e01b815260040180828152602001915050600060405180830381600087803b1580156101da57600080fd5b505af11580156101ee573d6000803e3d6000fd5b50505050505b50565b60015481565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141561027f57806001819055505b5056fea265627a7a72315820b49b9bbd67969a1e6ef08cf28baaf968506e6dd0d97af785bc7e350f71b33a9464736f6c63430005110032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c80630900f01014610051578063445df0ac146100955780638da5cb5b146100b3578063fdacd576146100fd575b600080fd5b6100936004803603602081101561006757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061012b565b005b61009d6101f7565b6040518082815260200191505060405180910390f35b6100bb6101fd565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101296004803603602081101561011357600080fd5b8101908080359060200190929190505050610222565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156101f45760008190508073ffffffffffffffffffffffffffffffffffffffff1663fdacd5766001546040518263ffffffff1660e01b815260040180828152602001915050600060405180830381600087803b1580156101da57600080fd5b505af11580156101ee573d6000803e3d6000fd5b50505050505b50565b60015481565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141561027f57806001819055505b5056fea265627a7a72315820b49b9bbd67969a1e6ef08cf28baaf968506e6dd0d97af785bc7e350f71b33a9464736f6c63430005110032",
+  "sourceMap": "34:526:1:-;;;132:56;8:9:-1;5:2;;;30:1;27;20:12;5:2;132:56:1;171:10;163:5;;:18;;;;;;;;;;;;;;;;;;34:526;;;;;;",
+  "deployedSourceMap": "34:526:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;34:526:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;383:175;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;383:175:1;;;;;;;;;;;;;;;;;;;:::i;:::-;;86:39;;;:::i;:::-;;;;;;;;;;;;;;;;;;;60:20;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;265:112;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;265:112:1;;;;;;;;;;;;;;;;;:::i;:::-;;383:175;244:5;;;;;;;;;;;230:19;;:10;:19;;;226:26;;;449:19;482:11;449:45;;504:8;:21;;;526:24;;504:47;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;504:47:1;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;504:47:1;;;;251:1;226:26;383:175;:::o;86:39::-;;;;:::o;60:20::-;;;;;;;;;;;;;:::o;265:112::-;244:5;;;;;;;;;;;230:19;;:10;:19;;;226:26;;;361:9;334:24;:36;;;;226:26;265:112;:::o",
   "source": "pragma solidity >=0.5.0 <0.7.0;\n\n\ncontract Migrations {\n    address public owner;\n    uint256 public last_completed_migration;\n\n    constructor() public {\n        owner = msg.sender;\n    }\n\n    modifier restricted() {\n        if (msg.sender == owner) _;\n    }\n\n    function setCompleted(uint256 completed) public restricted {\n        last_completed_migration = completed;\n    }\n\n    function upgrade(address new_address) public restricted {\n        Migrations upgraded = Migrations(new_address);\n        upgraded.setCompleted(last_completed_migration);\n    }\n}\n",
   "sourcePath": "/home/yahya/Documents/GitHub/alf-transparency/contracts/Migrations.sol",
   "ast": {
@@ -93,7 +100,6 @@
         "src": "0:31:1"
       },
       {
-        "abstract": false,
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "contract",
@@ -108,11 +114,9 @@
         "nodes": [
           {
             "constant": false,
-            "functionSelector": "8da5cb5b",
             "id": 51,
             "name": "owner",
             "nodeType": "VariableDeclaration",
-            "overrides": null,
             "scope": 104,
             "src": "60:20:1",
             "stateVariable": true,
@@ -137,11 +141,9 @@
           },
           {
             "constant": false,
-            "functionSelector": "445df0ac",
             "id": 53,
             "name": "last_completed_migration",
             "nodeType": "VariableDeclaration",
-            "overrides": null,
             "scope": 104,
             "src": "86:39:1",
             "stateVariable": true,
@@ -240,7 +242,6 @@
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
               "id": 54,
               "nodeType": "ParameterList",
@@ -256,7 +257,7 @@
             "scope": 104,
             "src": "132:56:1",
             "stateMutability": "nonpayable",
-            "virtual": false,
+            "superFunction": null,
             "visibility": "public"
           },
           {
@@ -343,7 +344,6 @@
             "id": 71,
             "name": "restricted",
             "nodeType": "ModifierDefinition",
-            "overrides": null,
             "parameters": {
               "id": 63,
               "nodeType": "ParameterList",
@@ -351,7 +351,6 @@
               "src": "213:2:1"
             },
             "src": "194:65:1",
-            "virtual": false,
             "visibility": "internal"
           },
           {
@@ -409,7 +408,6 @@
               ]
             },
             "documentation": null,
-            "functionSelector": "fdacd576",
             "id": 83,
             "implemented": true,
             "kind": "function",
@@ -436,7 +434,6 @@
             ],
             "name": "setCompleted",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
               "id": 74,
               "nodeType": "ParameterList",
@@ -446,7 +443,6 @@
                   "id": 73,
                   "name": "completed",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
                   "scope": 83,
                   "src": "287:17:1",
                   "stateVariable": false,
@@ -480,7 +476,7 @@
             "scope": 104,
             "src": "265:112:1",
             "stateMutability": "nonpayable",
-            "virtual": false,
+            "superFunction": null,
             "visibility": "public"
           },
           {
@@ -499,7 +495,6 @@
                       "id": 91,
                       "name": "upgraded",
                       "nodeType": "VariableDeclaration",
-                      "overrides": null,
                       "scope": 102,
                       "src": "449:19:1",
                       "stateVariable": false,
@@ -569,7 +564,6 @@
                     "names": [],
                     "nodeType": "FunctionCall",
                     "src": "471:23:1",
-                    "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_Migrations_$104",
                       "typeString": "contract Migrations"
@@ -639,7 +633,6 @@
                     "names": [],
                     "nodeType": "FunctionCall",
                     "src": "504:47:1",
-                    "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
@@ -652,7 +645,6 @@
               ]
             },
             "documentation": null,
-            "functionSelector": "0900f010",
             "id": 103,
             "implemented": true,
             "kind": "function",
@@ -679,7 +671,6 @@
             ],
             "name": "upgrade",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
               "id": 86,
               "nodeType": "ParameterList",
@@ -689,7 +680,6 @@
                   "id": 85,
                   "name": "new_address",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
                   "scope": 103,
                   "src": "400:19:1",
                   "stateVariable": false,
@@ -724,7 +714,7 @@
             "scope": 104,
             "src": "383:175:1",
             "stateMutability": "nonpayable",
-            "virtual": false,
+            "superFunction": null,
             "visibility": "public"
           }
         ],
@@ -759,7 +749,6 @@
         "src": "0:31:1"
       },
       {
-        "abstract": false,
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "contract",
@@ -774,11 +763,9 @@
         "nodes": [
           {
             "constant": false,
-            "functionSelector": "8da5cb5b",
             "id": 51,
             "name": "owner",
             "nodeType": "VariableDeclaration",
-            "overrides": null,
             "scope": 104,
             "src": "60:20:1",
             "stateVariable": true,
@@ -803,11 +790,9 @@
           },
           {
             "constant": false,
-            "functionSelector": "445df0ac",
             "id": 53,
             "name": "last_completed_migration",
             "nodeType": "VariableDeclaration",
-            "overrides": null,
             "scope": 104,
             "src": "86:39:1",
             "stateVariable": true,
@@ -906,7 +891,6 @@
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
               "id": 54,
               "nodeType": "ParameterList",
@@ -922,7 +906,7 @@
             "scope": 104,
             "src": "132:56:1",
             "stateMutability": "nonpayable",
-            "virtual": false,
+            "superFunction": null,
             "visibility": "public"
           },
           {
@@ -1009,7 +993,6 @@
             "id": 71,
             "name": "restricted",
             "nodeType": "ModifierDefinition",
-            "overrides": null,
             "parameters": {
               "id": 63,
               "nodeType": "ParameterList",
@@ -1017,7 +1000,6 @@
               "src": "213:2:1"
             },
             "src": "194:65:1",
-            "virtual": false,
             "visibility": "internal"
           },
           {
@@ -1075,7 +1057,6 @@
               ]
             },
             "documentation": null,
-            "functionSelector": "fdacd576",
             "id": 83,
             "implemented": true,
             "kind": "function",
@@ -1102,7 +1083,6 @@
             ],
             "name": "setCompleted",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
               "id": 74,
               "nodeType": "ParameterList",
@@ -1112,7 +1092,6 @@
                   "id": 73,
                   "name": "completed",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
                   "scope": 83,
                   "src": "287:17:1",
                   "stateVariable": false,
@@ -1146,7 +1125,7 @@
             "scope": 104,
             "src": "265:112:1",
             "stateMutability": "nonpayable",
-            "virtual": false,
+            "superFunction": null,
             "visibility": "public"
           },
           {
@@ -1165,7 +1144,6 @@
                       "id": 91,
                       "name": "upgraded",
                       "nodeType": "VariableDeclaration",
-                      "overrides": null,
                       "scope": 102,
                       "src": "449:19:1",
                       "stateVariable": false,
@@ -1235,7 +1213,6 @@
                     "names": [],
                     "nodeType": "FunctionCall",
                     "src": "471:23:1",
-                    "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_contract$_Migrations_$104",
                       "typeString": "contract Migrations"
@@ -1305,7 +1282,6 @@
                     "names": [],
                     "nodeType": "FunctionCall",
                     "src": "504:47:1",
-                    "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
@@ -1318,7 +1294,6 @@
               ]
             },
             "documentation": null,
-            "functionSelector": "0900f010",
             "id": 103,
             "implemented": true,
             "kind": "function",
@@ -1345,7 +1320,6 @@
             ],
             "name": "upgrade",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
               "id": 86,
               "nodeType": "ParameterList",
@@ -1355,7 +1329,6 @@
                   "id": 85,
                   "name": "new_address",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
                   "scope": 103,
                   "src": "400:19:1",
                   "stateVariable": false,
@@ -1390,7 +1363,7 @@
             "scope": 104,
             "src": "383:175:1",
             "stateMutability": "nonpayable",
-            "virtual": false,
+            "superFunction": null,
             "visibility": "public"
           }
         ],
@@ -1402,18 +1375,18 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.6.0+commit.26b70077.Emscripten.clang"
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
   },
   "networks": {
     "73799": {
       "events": {},
       "links": {},
-      "address": "0x4d222dBc0e5c48291b46387baBDB1cc138B896a7",
-      "transactionHash": "0x2d2233f94aec8951c6d9460028fa894b619c84129c93fbd9f29461e6a817509c"
+      "address": "0xdca1431D9Ff8C9860e2602c67130B800ED8848C8",
+      "transactionHash": "0x3fdcb968a76ee06f6066142c4d8c6e1a4cfbf72703194e3d42065cb9816da393"
     }
   },
   "schemaVersion": "3.1.0",
-  "updatedAt": "2020-05-22T12:16:00.527Z",
+  "updatedAt": "2020-05-26T11:21:20.898Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
