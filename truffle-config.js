@@ -34,7 +34,7 @@ module.exports = {
   plugins: ["solidity-coverage"],
   compilers: {
     solc: {
-      version: "0.6.0",
+      version: "^0.5.0",
     },
   },
   // mocha: {
