@@ -27,6 +27,7 @@
       "type": "event"
     },
     {
+      "constant": true,
       "inputs": [],
       "name": "creationTime",
       "outputs": [
@@ -36,11 +37,12 @@
           "type": "uint256"
         }
       ],
+      "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
+      "constant": true,
       "inputs": [],
       "name": "owner",
       "outputs": [
@@ -50,11 +52,12 @@
           "type": "address"
         }
       ],
+      "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
+      "constant": false,
       "inputs": [
         {
           "internalType": "string",
@@ -74,15 +77,16 @@
       ],
       "name": "sendHash",
       "outputs": [],
+      "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.0+commit.26b70077\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"docHash\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"docType\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"NewHash\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"creationTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_docHash\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_docType\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_timestamp\",\"type\":\"uint256\"}],\"name\":\"sendHash\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Muhammad Yahya @OLI Systems GmbH\",\"details\":\"send hash to the blockchain\",\"methods\":{\"sendHash(string,string,uint256)\":{\"details\":\"fire the event when hash is sent\",\"params\":{\"_docHash\":\"sha3 hash of the document\",\"_docType\":\"document type\",\"_timestamp\":\"timestamp when the hash was created\"}}},\"title\":\"ALFTransparency\"},\"userdoc\":{\"methods\":{\"sendHash(string,string,uint256)\":{\"notice\":\"send document hash with doc type and timestamp\"}},\"notice\":\"Implements doc hashing on the basis of the ALF Flex Market\"}},\"settings\":{\"compilationTarget\":{\"/home/yahya/Documents/GitHub/alf-transparency/contracts/ALFTransparency.sol\":\"ALFTransparency\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/yahya/Documents/GitHub/alf-transparency/contracts/ALFTransparency.sol\":{\"keccak256\":\"0x0094c4b7fe3b1d5438f1d890c5271467d1c5ba852138ab7b2400eed13e2d4def\",\"urls\":[\"bzz-raw://6bfc690be0725f90936294b42c6642a4cbcd3a1ea1ddfcde4ac3bc230f21a082\",\"dweb:/ipfs/QmZBjTdXiDiYkD48pQKwct4pdqsPPzNBauvs8yf2RGwLZT\"]}},\"version\":1}",
-  "bytecode": "0x6080604052336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055504260015534801561005457600080fd5b50610443806100646000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c80637d800bfa146100465780638da5cb5b146101a2578063d8270dce146101ec575b600080fd5b6101a06004803603606081101561005c57600080fd5b810190808035906020019064010000000081111561007957600080fd5b82018360208201111561008b57600080fd5b803590602001918460018302840111640100000000831117156100ad57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f8201169050808301925050505050505091929192908035906020019064010000000081111561011057600080fd5b82018360208201111561012257600080fd5b8035906020019184600183028401116401000000008311171561014457600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f8201169050808301925050505050505091929192908035906020019092919050505061020a565b005b6101aa6103e2565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101f4610407565b6040518082815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146102cc576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260198152602001807f4f6e6c79206f776e65722063616e2073656e6420686173682e0000000000000081525060200191505060405180910390fd5b7f23ba23fbaa1f0754844f3132a67c8d09534293dd68dfda04d531d93fdc56efcb838383604051808060200180602001848152602001838103835286818151815260200191508051906020019080838360005b8381101561033a57808201518184015260208101905061031f565b50505050905090810190601f1680156103675780820380516001836020036101000a031916815260200191505b50838103825285818151815260200191508051906020019080838360005b838110156103a0578082015181840152602081019050610385565b50505050905090810190601f1680156103cd5780820380516001836020036101000a031916815260200191505b509550505050505060405180910390a1505050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6001548156fea2646970667358221220892a3444fbc407da6cf4104d91da7007fb10bc3186e5562ea9c80fca7863cb4964736f6c63430006000033",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c80637d800bfa146100465780638da5cb5b146101a2578063d8270dce146101ec575b600080fd5b6101a06004803603606081101561005c57600080fd5b810190808035906020019064010000000081111561007957600080fd5b82018360208201111561008b57600080fd5b803590602001918460018302840111640100000000831117156100ad57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f8201169050808301925050505050505091929192908035906020019064010000000081111561011057600080fd5b82018360208201111561012257600080fd5b8035906020019184600183028401116401000000008311171561014457600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f8201169050808301925050505050505091929192908035906020019092919050505061020a565b005b6101aa6103e2565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101f4610407565b6040518082815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146102cc576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260198152602001807f4f6e6c79206f776e65722063616e2073656e6420686173682e0000000000000081525060200191505060405180910390fd5b7f23ba23fbaa1f0754844f3132a67c8d09534293dd68dfda04d531d93fdc56efcb838383604051808060200180602001848152602001838103835286818151815260200191508051906020019080838360005b8381101561033a57808201518184015260208101905061031f565b50505050905090810190601f1680156103675780820380516001836020036101000a031916815260200191505b50838103825285818151815260200191508051906020019080838360005b838110156103a0578082015181840152602081019050610385565b50505050905090810190601f1680156103cd5780820380516001836020036101000a031916815260200191505b509550505050505060405180910390a1505050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6001548156fea2646970667358221220892a3444fbc407da6cf4104d91da7007fb10bc3186e5562ea9c80fca7863cb4964736f6c63430006000033",
-  "sourceMap": "214:987:0:-:0;;;344:10;321:33;;;;;;;;;;;;;;;;;;;;429:3;399:33;;214:987;8:9:-1;5:2;;;30:1;27;20:12;5:2;214:987:0;;;;;;;",
-  "deployedSourceMap": "214:987:0:-:0;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;214:987:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1005:194;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1005:194:0;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;1005:194:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;1005:194:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;1005:194:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;1005:194:0;;;;;;;;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;1005:194:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;1005:194:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;1005:194:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;1005:194:0;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;321:33;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;399;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1005:194;568:5;;;;;;;;;;;554:19;;:10;:19;;;546:57;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1153:39:::1;1161:8;1171;1181:10;1153:39;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;1153:39:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;1153:39:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1005:194:::0;;;:::o;321:33::-;;;;;;;;;;;;;:::o;399:::-;;;;:::o",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"docHash\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"docType\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"NewHash\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[],\"name\":\"creationTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"_docHash\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_docType\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_timestamp\",\"type\":\"uint256\"}],\"name\":\"sendHash\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Muhammad Yahya @OLI Systems GmbH\",\"details\":\"send hash to the blockchain\",\"methods\":{\"sendHash(string,string,uint256)\":{\"details\":\"fire the event when hash is sent\",\"params\":{\"_docHash\":\"sha3 hash of the document\",\"_docType\":\"document type\",\"_timestamp\":\"timestamp when the hash was created\"}}},\"title\":\"ALFTransparency\"},\"userdoc\":{\"methods\":{\"sendHash(string,string,uint256)\":{\"notice\":\"send document hash with doc type and timestamp\"}},\"notice\":\"Implements doc hashing on the basis of the ALF Flex Market\"}},\"settings\":{\"compilationTarget\":{\"/home/yahya/Documents/GitHub/alf-transparency/contracts/ALFTransparency.sol\":\"ALFTransparency\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/yahya/Documents/GitHub/alf-transparency/contracts/ALFTransparency.sol\":{\"keccak256\":\"0x0094c4b7fe3b1d5438f1d890c5271467d1c5ba852138ab7b2400eed13e2d4def\",\"urls\":[\"bzz-raw://6bfc690be0725f90936294b42c6642a4cbcd3a1ea1ddfcde4ac3bc230f21a082\",\"dweb:/ipfs/QmZBjTdXiDiYkD48pQKwct4pdqsPPzNBauvs8yf2RGwLZT\"]}},\"version\":1}",
+  "bytecode": "0x6080604052336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055504260015534801561005457600080fd5b50610442806100646000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c80637d800bfa146100465780638da5cb5b146101a2578063d8270dce146101ec575b600080fd5b6101a06004803603606081101561005c57600080fd5b810190808035906020019064010000000081111561007957600080fd5b82018360208201111561008b57600080fd5b803590602001918460018302840111640100000000831117156100ad57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f8201169050808301925050505050505091929192908035906020019064010000000081111561011057600080fd5b82018360208201111561012257600080fd5b8035906020019184600183028401116401000000008311171561014457600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f8201169050808301925050505050505091929192908035906020019092919050505061020a565b005b6101aa6103e2565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101f4610407565b6040518082815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146102cc576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260198152602001807f4f6e6c79206f776e65722063616e2073656e6420686173682e0000000000000081525060200191505060405180910390fd5b7f23ba23fbaa1f0754844f3132a67c8d09534293dd68dfda04d531d93fdc56efcb838383604051808060200180602001848152602001838103835286818151815260200191508051906020019080838360005b8381101561033a57808201518184015260208101905061031f565b50505050905090810190601f1680156103675780820380516001836020036101000a031916815260200191505b50838103825285818151815260200191508051906020019080838360005b838110156103a0578082015181840152602081019050610385565b50505050905090810190601f1680156103cd5780820380516001836020036101000a031916815260200191505b509550505050505060405180910390a1505050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6001548156fea265627a7a72315820a816d66b831c6ee49265c0804fecb2a65d7852446da66685b1a35a7bc1e524d964736f6c63430005110032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c80637d800bfa146100465780638da5cb5b146101a2578063d8270dce146101ec575b600080fd5b6101a06004803603606081101561005c57600080fd5b810190808035906020019064010000000081111561007957600080fd5b82018360208201111561008b57600080fd5b803590602001918460018302840111640100000000831117156100ad57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f8201169050808301925050505050505091929192908035906020019064010000000081111561011057600080fd5b82018360208201111561012257600080fd5b8035906020019184600183028401116401000000008311171561014457600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f8201169050808301925050505050505091929192908035906020019092919050505061020a565b005b6101aa6103e2565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101f4610407565b6040518082815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146102cc576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260198152602001807f4f6e6c79206f776e65722063616e2073656e6420686173682e0000000000000081525060200191505060405180910390fd5b7f23ba23fbaa1f0754844f3132a67c8d09534293dd68dfda04d531d93fdc56efcb838383604051808060200180602001848152602001838103835286818151815260200191508051906020019080838360005b8381101561033a57808201518184015260208101905061031f565b50505050905090810190601f1680156103675780820380516001836020036101000a031916815260200191505b50838103825285818151815260200191508051906020019080838360005b838110156103a0578082015181840152602081019050610385565b50505050905090810190601f1680156103cd5780820380516001836020036101000a031916815260200191505b509550505050505060405180910390a1505050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6001548156fea265627a7a72315820a816d66b831c6ee49265c0804fecb2a65d7852446da66685b1a35a7bc1e524d964736f6c63430005110032",
+  "sourceMap": "214:987:0:-;;;344:10;321:33;;;;;;;;;;;;;;;;;;;;429:3;399:33;;214:987;8:9:-1;5:2;;;30:1;27;20:12;5:2;214:987:0;;;;;;;",
+  "deployedSourceMap": "214:987:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;214:987:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1005:194;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1005:194:0;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;1005:194:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;1005:194:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;1005:194:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;1005:194:0;;;;;;;;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;1005:194:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;1005:194:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;1005:194:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;1005:194:0;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;321:33;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;399;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1005:194;568:5;;;;;;;;;;;554:19;;:10;:19;;;546:57;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1153:39;1161:8;1171;1181:10;1153:39;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;1153:39:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;1153:39:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1005:194;;;:::o;321:33::-;;;;;;;;;;;;;:::o;399:::-;;;;:::o",
   "source": "pragma solidity >=0.5.0 <0.7.0;\n\n\n/// @title ALFTransparency\n/// @author Muhammad Yahya @OLI Systems GmbH\n/// @notice Implements doc hashing on the basis of the ALF Flex Market\n/// @dev send hash to the blockchain\ncontract ALFTransparency {\n    /// @notice sets contract creating account as owner at the construction\n    address public owner = msg.sender;\n    /// @notice contract creation time\n    uint256 public creationTime = now;\n\n    /// @dev Modifier to check that the caller is the owner of the contract\n    modifier onlyOwner() {\n        require(msg.sender == owner, \"Only owner can send hash.\");\n        _;\n    }\n\n    /// @notice event fired when a hash is sent\n    event NewHash(string docHash, string docType, uint256 timestamp);\n\n    /// @notice send document hash with doc type and timestamp\n    /// @dev fire the event when hash is sent\n    /// @param _docHash sha3 hash of the document\n    /// @param _docType document type\n    /// @param _timestamp timestamp when the hash was created\n    function sendHash(\n        string memory _docHash,\n        string memory _docType,\n        uint256 _timestamp\n    ) public onlyOwner {\n        emit NewHash(_docHash, _docType, _timestamp);\n    }\n}\n",
   "sourcePath": "/home/yahya/Documents/GitHub/alf-transparency/contracts/ALFTransparency.sol",
   "ast": {
@@ -110,7 +114,6 @@
         "src": "0:31:0"
       },
       {
-        "abstract": false,
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "contract",
@@ -125,11 +128,9 @@
         "nodes": [
           {
             "constant": false,
-            "functionSelector": "8da5cb5b",
             "id": 5,
             "name": "owner",
             "nodeType": "VariableDeclaration",
-            "overrides": null,
             "scope": 47,
             "src": "321:33:0",
             "stateVariable": true,
@@ -182,11 +183,9 @@
           },
           {
             "constant": false,
-            "functionSelector": "d8270dce",
             "id": 8,
             "name": "creationTime",
             "nodeType": "VariableDeclaration",
-            "overrides": null,
             "scope": 47,
             "src": "399:33:0",
             "stateVariable": true,
@@ -344,7 +343,6 @@
                     "names": [],
                     "nodeType": "FunctionCall",
                     "src": "546:57:0",
-                    "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
@@ -365,7 +363,6 @@
             "id": 20,
             "name": "onlyOwner",
             "nodeType": "ModifierDefinition",
-            "overrides": null,
             "parameters": {
               "id": 9,
               "nodeType": "ParameterList",
@@ -373,7 +370,6 @@
               "src": "533:2:0"
             },
             "src": "515:106:0",
-            "virtual": false,
             "visibility": "internal"
           },
           {
@@ -392,7 +388,6 @@
                   "indexed": false,
                   "name": "docHash",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
                   "scope": 28,
                   "src": "689:14:0",
                   "stateVariable": false,
@@ -420,7 +415,6 @@
                   "indexed": false,
                   "name": "docType",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
                   "scope": 28,
                   "src": "705:14:0",
                   "stateVariable": false,
@@ -448,7 +442,6 @@
                   "indexed": false,
                   "name": "timestamp",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
                   "scope": 28,
                   "src": "721:17:0",
                   "stateVariable": false,
@@ -560,7 +553,6 @@
                     "names": [],
                     "nodeType": "FunctionCall",
                     "src": "1153:39:0",
-                    "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
@@ -573,7 +565,6 @@
               ]
             },
             "documentation": "@notice send document hash with doc type and timestamp\n @dev fire the event when hash is sent\n @param _docHash sha3 hash of the document\n @param _docType document type\n @param _timestamp timestamp when the hash was created",
-            "functionSelector": "7d800bfa",
             "id": 46,
             "implemented": true,
             "kind": "function",
@@ -600,7 +591,6 @@
             ],
             "name": "sendHash",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
               "id": 35,
               "nodeType": "ParameterList",
@@ -610,7 +600,6 @@
                   "id": 30,
                   "name": "_docHash",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
                   "scope": 46,
                   "src": "1032:22:0",
                   "stateVariable": false,
@@ -637,7 +626,6 @@
                   "id": 32,
                   "name": "_docType",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
                   "scope": 46,
                   "src": "1064:22:0",
                   "stateVariable": false,
@@ -664,7 +652,6 @@
                   "id": 34,
                   "name": "_timestamp",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
                   "scope": 46,
                   "src": "1096:18:0",
                   "stateVariable": false,
@@ -698,7 +685,7 @@
             "scope": 47,
             "src": "1005:194:0",
             "stateMutability": "nonpayable",
-            "virtual": false,
+            "superFunction": null,
             "visibility": "public"
           }
         ],
@@ -733,7 +720,6 @@
         "src": "0:31:0"
       },
       {
-        "abstract": false,
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "contract",
@@ -748,11 +734,9 @@
         "nodes": [
           {
             "constant": false,
-            "functionSelector": "8da5cb5b",
             "id": 5,
             "name": "owner",
             "nodeType": "VariableDeclaration",
-            "overrides": null,
             "scope": 47,
             "src": "321:33:0",
             "stateVariable": true,
@@ -805,11 +789,9 @@
           },
           {
             "constant": false,
-            "functionSelector": "d8270dce",
             "id": 8,
             "name": "creationTime",
             "nodeType": "VariableDeclaration",
-            "overrides": null,
             "scope": 47,
             "src": "399:33:0",
             "stateVariable": true,
@@ -967,7 +949,6 @@
                     "names": [],
                     "nodeType": "FunctionCall",
                     "src": "546:57:0",
-                    "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
@@ -988,7 +969,6 @@
             "id": 20,
             "name": "onlyOwner",
             "nodeType": "ModifierDefinition",
-            "overrides": null,
             "parameters": {
               "id": 9,
               "nodeType": "ParameterList",
@@ -996,7 +976,6 @@
               "src": "533:2:0"
             },
             "src": "515:106:0",
-            "virtual": false,
             "visibility": "internal"
           },
           {
@@ -1015,7 +994,6 @@
                   "indexed": false,
                   "name": "docHash",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
                   "scope": 28,
                   "src": "689:14:0",
                   "stateVariable": false,
@@ -1043,7 +1021,6 @@
                   "indexed": false,
                   "name": "docType",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
                   "scope": 28,
                   "src": "705:14:0",
                   "stateVariable": false,
@@ -1071,7 +1048,6 @@
                   "indexed": false,
                   "name": "timestamp",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
                   "scope": 28,
                   "src": "721:17:0",
                   "stateVariable": false,
@@ -1183,7 +1159,6 @@
                     "names": [],
                     "nodeType": "FunctionCall",
                     "src": "1153:39:0",
-                    "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
@@ -1196,7 +1171,6 @@
               ]
             },
             "documentation": "@notice send document hash with doc type and timestamp\n @dev fire the event when hash is sent\n @param _docHash sha3 hash of the document\n @param _docType document type\n @param _timestamp timestamp when the hash was created",
-            "functionSelector": "7d800bfa",
             "id": 46,
             "implemented": true,
             "kind": "function",
@@ -1223,7 +1197,6 @@
             ],
             "name": "sendHash",
             "nodeType": "FunctionDefinition",
-            "overrides": null,
             "parameters": {
               "id": 35,
               "nodeType": "ParameterList",
@@ -1233,7 +1206,6 @@
                   "id": 30,
                   "name": "_docHash",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
                   "scope": 46,
                   "src": "1032:22:0",
                   "stateVariable": false,
@@ -1260,7 +1232,6 @@
                   "id": 32,
                   "name": "_docType",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
                   "scope": 46,
                   "src": "1064:22:0",
                   "stateVariable": false,
@@ -1287,7 +1258,6 @@
                   "id": 34,
                   "name": "_timestamp",
                   "nodeType": "VariableDeclaration",
-                  "overrides": null,
                   "scope": 46,
                   "src": "1096:18:0",
                   "stateVariable": false,
@@ -1321,7 +1291,7 @@
             "scope": 47,
             "src": "1005:194:0",
             "stateMutability": "nonpayable",
-            "virtual": false,
+            "superFunction": null,
             "visibility": "public"
           }
         ],
@@ -1333,7 +1303,7 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.6.0+commit.26b70077.Emscripten.clang"
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
   },
   "networks": {
     "73799": {
@@ -1365,12 +1335,12 @@
         }
       },
       "links": {},
-      "address": "0x3a0539Cc77dfCb22859a92a6abF0a8ec12DC4660",
-      "transactionHash": "0x862069ebfeeac7c4273f9a39107ac77987c57e52df0a45c1324a3f46e1f1f0fa"
+      "address": "0xAD8b575B1ABcB97613a6e908A1D8FE4BDD80EEc8",
+      "transactionHash": "0x752e463332c6f11390416efed527643930b6ec09d318272112ce0cf5c9a219fe"
     }
   },
   "schemaVersion": "3.1.0",
-  "updatedAt": "2020-05-22T12:16:00.521Z",
+  "updatedAt": "2020-05-26T11:21:20.893Z",
   "networkType": "ethereum",
   "devdoc": {
     "author": "Muhammad Yahya @OLI Systems GmbH",
