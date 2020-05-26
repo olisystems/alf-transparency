@@ -4,3 +4,5 @@ node_modules
 coverage
 coverage.json
 coverageEnv
+
+/app/src/assets/js/auth.js
