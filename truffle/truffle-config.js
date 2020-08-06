@@ -30,11 +30,12 @@ module.exports = {
       version: '^0.5.0',
     },
   },
-  // mocha: {
-  //   reporter: "eth-gas-reporter",
-  //   reporterOptions: {
-  //     excludeContracts: ["Migrations"],
-  //     url: "https://volta-rpc.energyweb.org",
-  //   },
-  // },
+  mocha: {
+    enableTimeouts: false,
+    //   reporter: 'eth-gas-reporter',
+    //   reporterOptions: {
+    //     excludeContracts: ['Migrations'],
+    //     url: 'https://volta-rpc.energyweb.org',
+    //   },
+  },
 }
