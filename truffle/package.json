@@ -1,0 +1,48 @@
+{
+  "name": "alf-transparency",
+  "version": "1.0.0",
+  "description": "Implements Hashing-Dashboard on the basis of the ALF Flex Market with Vue.js and the Ethereum netwrok",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test --network volta",
+    "migrate": "truffle migrate --reset --network volta",
+    "ganache": "ganache-cli -m 'vibrant leaf buyer satoshi carry bright silver must reject mix own hour'",
+    "prettier": "prettier --write **/*.sol",
+    "slint": "solhint \"contracts/**/*.sol\"",
+    "coverage": "npx truffle run coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olisystems/alf-transparency.git"
+  },
+  "keywords": [
+    "Ethereum",
+    "Solidity",
+    "Smart Contracts",
+    "Truffle",
+    "Vue.js",
+    "hash",
+    "Volta"
+  ],
+  "author": "Muhammad Yahya @ OLI Systems",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olisystems/alf-transparency/issues"
+  },
+  "homepage": "https://github.com/olisystems/alf-transparency#readme",
+  "devDependencies": {
+    "@truffle/hdwallet-provider": "^1.0.35",
+    "eth-gas-reporter": "^0.2.17",
+    "ganache-cli": "^6.10.1",
+    "prettier": "^2.0.5",
+    "prettier-plugin-solidity": "^1.0.0-alpha.51",
+    "solhint": "^3.1.0",
+    "solidity-coverage": "^0.7.5",
+    "truffle": "^5.1.37",
+    "truffle-assertions": "^0.9.2",
+    "web3-provider-engine": "^15.0.7"
+  }
+}
