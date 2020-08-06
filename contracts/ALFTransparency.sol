@@ -1,15 +1,23 @@
-pragma solidity >=0.5.0 <0.7.0;
-
+pragma solidity >=0.4.22 <0.7.0;
 
 /// @title ALFTransparency
-/// @author Muhammad Yahya @OLI Systems GmbH
-/// @notice Implements doc hashing on the basis of the ALF Flex Market
-/// @dev send hash to the blockchain
+/// @notice Implements offer hashing on the basis of the ALF Flex Market
+/// @dev store Merkle root hash on the blockchain
 contract ALFTransparency {
-    /// @notice sets contract creating account as owner at the construction
-    address public owner = msg.sender;
-    /// @notice contract creation time
-    uint256 public creationTime = now;
+    /// @notice owner of the contract
+    address public owner;
+
+    /// @notice sets contract creating account as owner
+    /// @dev register the creator of the contract
+    constructor() public {
+        owner = msg.sender;
+    }
+
+    /// create Hash struct with two fields
+    struct Hash {
+        string rootHash;
+        string user;
+    }
 
     /// @dev Modifier to check that the caller is the owner of the contract
     modifier onlyOwner() {
@@ -18,18 +26,33 @@ contract ALFTransparency {
     }
 
     /// @notice event fired when a hash is sent
-    event NewHash(string docHash, string docType, uint256 timestamp);
+    event NewHash(string rootHash, string user, string timestamp);
 
-    /// @notice send document hash with doc type and timestamp
+    /// @notice map timestamp to Hash struct
+    mapping(string => Hash) hashes;
+
+    /// @notice send Merkle root hash and username
     /// @dev fire the event when hash is sent
-    /// @param _docHash sha3 hash of the document
-    /// @param _docType document type
-    /// @param _timestamp timestamp when the hash was created
+    /// @param _rootHash Merkle root hash
+    /// @param _user username
+    /// @param _timestamp timestamp when the root hash was created
     function sendHash(
-        string memory _docHash,
-        string memory _docType,
-        uint256 _timestamp
+        string memory _rootHash,
+        string memory _user,
+        string memory _timestamp
     ) public onlyOwner {
-        emit NewHash(_docHash, _docType, _timestamp);
+        hashes[_timestamp] = Hash(_rootHash, _user);
+        emit NewHash(_rootHash, _user, _timestamp);
+    }
+
+    /// @notice get the hash for a given timestamp
+    /// @dev returns the root hash for a given timestamp
+    /// @param _timestamp when the root hash was created
+    /// @return root Merkle root hash and username
+    function getHash(string memory _timestamp)
+        public
+        returns (string memory, string memory)
+    {
+        return (hashes[_timestamp].rootHash, hashes[_timestamp].user);
     }
 }
