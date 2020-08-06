@@ -1,4 +1,4 @@
-pragma solidity >=0.4.22 <0.7.0;
+pragma solidity >=0.5.0 <0.7.0;
 
 /// @title ALFTransparency
 /// @notice Implements offer hashing on the basis of the ALF Flex Market
@@ -29,7 +29,7 @@ contract ALFTransparency {
     event NewHash(string rootHash, string user, string timestamp);
 
     /// @notice map timestamp to Hash struct
-    mapping(string => Hash) hashes;
+    mapping(string => Hash) private hashes;
 
     /// @notice send Merkle root hash and username
     /// @dev fire the event when hash is sent
