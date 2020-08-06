@@ -51,6 +51,7 @@ contract ALFTransparency {
     /// @return root Merkle root hash and username
     function getHash(string memory _timestamp)
         public
+        view
         returns (string memory, string memory)
     {
         return (hashes[_timestamp].rootHash, hashes[_timestamp].user);
