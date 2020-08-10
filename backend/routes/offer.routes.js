@@ -5,3 +5,15 @@
 // two routes will be:
 // 1. /offers
 // 2. /offers/:offerDate
+
+module.exports = (app) => {
+    const offers = require('../controllers/offer.controller.js')
+    const router = require('express').Router()
+
+    router.post('/', offers.create)
+    router.get('/all', offers.findAll)
+    router.get('/byUsername', offers.findByUsername)
+    router.get('/byUsernameDate', offers.findByUsernameDate)
+
+    app.use('/api/offers', router)
+}
