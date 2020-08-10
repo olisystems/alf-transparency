@@ -47,3 +47,30 @@ exports.findByUsernameDate = (req, res) => {
         console.log('Error finding offers!', err)
     });
 };
+
+// --- Proof of Concept controller functions ---
+exports.getHash = (req, res) => {
+    Offer.find({
+        username: req.query.username,
+        date: req.query.date
+    }).then((data) => {
+        // Calculate hash here
+        res.send(data)
+    })
+    .catch((err) => {
+        console.log('Error finding offers!', err)
+    });
+};
+
+exports.getProof = (req, res) => {
+    Offer.find({
+        username: req.query.username,
+        date: req.query.date
+    }).then((data) => {
+        // Calculate proof here
+        res.send(data)
+    })
+    .catch((err) => {
+        console.log('Error finding offers!', err)
+    });
+};
