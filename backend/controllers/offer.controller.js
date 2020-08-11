@@ -1,9 +1,10 @@
 const db = require('../models')
+const Offer = db.offers
 const { MerkleTree } = require('merkletreejs')
 const SHA256 = require('crypto-js/sha256')
 const Base64 = require('crypto-js/enc-base64')
-const Offer = db.offers
 
+// create and save a new Offer
 exports.create = (req, res) => {
   const offer = new Offer({
     username: req.body.username,
@@ -11,48 +12,71 @@ exports.create = (req, res) => {
     offer: req.body.offer,
   })
 
+  // save offer to the db
   offer
     .save(offer)
     .then((data) => {
       res.send(data)
     })
     .catch((err) => {
-      console.log('Error saving offer!', err)
+      res.status(500).send({
+        message: err.message || 'Some error occurred while creating the Offer.',
+      })
     })
 }
 
-exports.findAll = (req, res) => {
-  Offer.find({})
+// Retrieve all Offers from the database.
+exports.findAll = (err, res) => {
+  Offer.find()
     .then((data) => {
       res.send(data)
     })
     .catch((err) => {
-      console.log('Error finding offers!', err)
+      res.status(500).send({
+        message: err.message || 'Some error occurred while retrieving offers.',
+      })
     })
 }
 
+// Find Offer by username
 exports.findByUsername = (req, res) => {
-  Offer.find({ username: req.query.username })
+  const username = req.query.username
+
+  Offer.find(username)
     .then((data) => {
-      res.send(data)
+      if (!data)
+        res.status(404).send({
+          message: `Offer not found with username: ${username}`,
+        })
+      else res.send(data)
     })
     .catch((err) => {
-      console.log('Error finding offers!', err)
-      res.send('ERROR: No offer with given username found.')
+      res.status(500).send({
+        message: `Offer not found with username: ${username}`,
+      })
     })
 }
 
+// Find Offer by username and date
 exports.findByUsernameDate = (req, res) => {
+  const username = req.query.username
+  const date = req.query.date
+
   Offer.find({
-    username: req.query.username,
-    date: req.query.date,
+    username: username,
+    date: date,
   })
     .then((data) => {
-      res.send(data)
+      if (!data)
+        res.status(404).send({
+          message: `Offer not found with username: ${username} and date: ${date}`,
+        })
+      else res.send(data)
     })
     .catch((err) => {
-      console.log('Error finding offers!', err)
-      res.send('ERROR: No offer with given username & date found.')
+      res.status(500).send({
+        message: `Offer not found with username: ${username} and date: ${date}`,
+      })
     })
 }
 
