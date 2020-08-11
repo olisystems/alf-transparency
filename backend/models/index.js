@@ -1,7 +1,8 @@
-const mongoose = require('mongoose')
 const dbConfig = require('../config/db.config')
-const db = {}
+const mongoose = require('mongoose')
+mongoose.Promise = global.Promise
 
+const db = {}
 db.mongoose = mongoose
 db.url = dbConfig.url
 db.offers = require('./offer.model.js')
