@@ -1,10 +1,13 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
-var schema = new mongoose.Schema({
-  username: 'string',
-  date: 'string',
-  offer: 'string',
+// Define Offer schema
+const OfferSchema = new Schema({
+  username: String,
+  date: String,
+  hash: String,
 })
-var Offer = mongoose.model('Offer', schema)
 
+// Create model
+const Offer = mongoose.model('User', OfferSchema)
 module.exports = Offer
