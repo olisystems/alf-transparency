@@ -82,15 +82,14 @@ exports.findByUsernameDate = (req, res) => {
 
 // --- Proof of Concept controller functions ---
 exports.getHash = (req, res) => {
-  // ERROR handling required for
-  Offer.find({
+  // Find first offer with given username & date
+  Offer.findOne({
     username: req.query.username,
     date: req.query.date,
   })
     .then((data) => {
-      // Calculate hash here
-      // IMPORTANT: Use same encoder on client & server side
-      res.send(SHA256(data.offer).toString(Base64))
+      // Return hash
+      res.send(data.hash)
     })
     .catch((err) => {
       console.log('ERROR: No offer with given username & date found.', err)
@@ -104,19 +103,17 @@ exports.getProof = (req, res) => {
   })
     .then((data) => {
       // Find offer with specified username
-      let offer = data.find((data) => {
+      const leaf = data.find( (data) => {
         return data.username == req.query.username
-      }).offer
-      // Create leaf hash from offer
-      let leaf = SHA256(offer)
+      }).hash
 
       // Extract offers from data and create leaves
-      let leaves = data.map((x) => SHA256(x.offer))
-      let tree = new MerkleTree(leaves, SHA256)
+      const leaves = data.map((x) => { return x.hash })
+      const tree = new MerkleTree(leaves, SHA256)
 
       // Get proof
       // Return empty array for single element tree!
-      let proof = tree.getProof(leaf)
+      const proof = tree.getProof(leaf)
       res.send(proof)
     })
     .catch((err) => {
