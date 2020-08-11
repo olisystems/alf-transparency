@@ -9,7 +9,7 @@ exports.create = (req, res) => {
   const offer = new Offer({
     username: req.body.username,
     date: req.body.date,
-    offer: req.body.offer,
+    hash: req.body.hash,
   })
 
   // save offer to the db

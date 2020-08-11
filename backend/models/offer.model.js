@@ -9,5 +9,5 @@ const OfferSchema = new Schema({
 })
 
 // Create model
-const Offer = mongoose.model('User', OfferSchema)
+const Offer = mongoose.model('Offer', OfferSchema)
 module.exports = Offer
