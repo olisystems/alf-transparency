@@ -1,28 +1,32 @@
 const express = require('express')
-var cors = require('cors')
-var bodyParser = require('body-parser')
-const db = require('./models')
-const app = express()
-const port = 3000
+const bodyParser = require('body-parser')
+const cors = require('cors')
 
-var corsOptions = {
+const app = express()
+
+// Set CORS options
+const corsOptions = {
   origin: 'http://localhost:8081',
   optionsSuccessStatus: 200,
 }
-
 app.use(cors(corsOptions))
+
+// Parse requests of content-type - application/json
 app.use(bodyParser.json())
+// Parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }))
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+// Initiate routes
+require('./routes/offer.routes')(app)
+
+// Set port, listen for requests
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`)
 })
 
-require('./routes/offer.routes.js')(app)
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
-
+// Mongoose connect method
+const db = require('./models')
 db.mongoose
   .connect(db.url, {
     useNewUrlParser: true,
