@@ -42,9 +42,9 @@ exports.findAll = (err, res) => {
 exports.findByUsername = (req, res) => {
   const username = req.query.username
 
-  Offer.find(username)
+  Offer.find({ username: username })
     .then((data) => {
-      if (!data)
+      if (data.length === 0)
         res.status(404).send({
           message: `Offer not found with username: ${username}`,
         })
@@ -67,7 +67,7 @@ exports.findByUsernameDate = (req, res) => {
     date: date,
   })
     .then((data) => {
-      if (!data)
+      if (data.length === 0)
         res.status(404).send({
           message: `Offer not found with username: ${username} and date: ${date}`,
         })
@@ -82,18 +82,25 @@ exports.findByUsernameDate = (req, res) => {
 
 // --- Proof of Concept controller functions ---
 exports.getHash = (req, res) => {
+  const username = req.query.username
+  const date = req.query.date
   // Find first offer with given username & date
   Offer.findOne({
-    username: req.query.username,
-    date: req.query.date,
+    username: username,
+    date: date,
   })
     .then((data) => {
       // Return hash
-      res.send(data.hash)
+      if (!data)
+        res.status(404).send({
+          message: `Hash not found with username: ${username} and date: ${date}`,
+        })
+      else res.send(data.hash)
     })
     .catch((err) => {
-      console.log('ERROR: No offer with given username & date found.', err)
-      res.send('ERROR: No offer with given username & date found.')
+      res.status(500).send({
+        message: `Hash not found with username: ${username} and date: ${date}`,
+      })
     })
 }
 
@@ -103,12 +110,14 @@ exports.getProof = (req, res) => {
   })
     .then((data) => {
       // Find offer with specified username
-      const leaf = data.find( (data) => {
+      const leaf = data.find((data) => {
         return data.username == req.query.username
       }).hash
 
       // Extract offers from data and create leaves
-      const leaves = data.map((x) => { return x.hash })
+      const leaves = data.map((x) => {
+        return x.hash
+      })
       const tree = new MerkleTree(leaves, SHA256)
 
       // Get proof
