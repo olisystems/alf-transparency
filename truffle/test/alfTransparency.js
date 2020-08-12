@@ -41,6 +41,15 @@ contract('ALFTransparency', function (accounts) {
   })
 
   // test 3
+  it('should fail to send the hash with the same timestamp', async () => {
+    await truffleAssert.reverts(
+      alfTransparencyContract.sendHash(hash, username, timestamp, {
+        from: owner,
+      }),
+    )
+  })
+
+  // test 4
   it('should fail to send the hash from the user account', async () => {
     await truffleAssert.reverts(
       alfTransparencyContract.sendHash(hash, username, timestamp, {
@@ -49,7 +58,7 @@ contract('ALFTransparency', function (accounts) {
     )
   })
 
-  // test 4
+  // test 5
   it('should return hash and username', async () => {
     // set data value
     const result = await alfTransparencyContract.getHash.call(timestamp)
