@@ -1,34 +1,33 @@
 <template>
   <div id="app">
-    <Stats />
-    <Hashes />
+    <Navbar />
   </div>
 </template>
 
 <script>
-import Hashes from "./components/Hashes.vue";
-import Stats from "./components/Stats.vue";
+import Navbar from './components/Navbar.vue'
 
 export default {
-  name: "app",
+  name: 'app',
   components: {
-    Stats,
-    Hashes,
+    Navbar,
   },
-};
+}
 </script>
 
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  display: flex;
+  flex-direction: column;
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: #333;
   background-color: #f3f3f3;
   width: 100%;
