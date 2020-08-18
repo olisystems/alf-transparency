@@ -1,0 +1,173 @@
+<template>
+  <div class="navbar">
+    <a href class="logo">ALF Transparency Market</a>
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn">
+      <span class="navicon"></span>
+    </label>
+    <ul class="menu">
+      <li>
+        <a href="#">Create Offer</a>
+      </li>
+      <li>
+        <a href="#">View Hashes</a>
+      </li>
+      <li>
+        <a href="#">Verification</a>
+      </li>
+    </ul>
+  </div>
+</template>
+<script>
+export default {
+  name: 'Navbar',
+  data() {
+    return {}
+  },
+  methods: {},
+
+  async created() {},
+}
+</script>
+<style scoped>
+.navbar {
+  width: 100%;
+  padding: 0.2rem 0;
+  background: rgb(0, 128, 194);
+}
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  text-align: left;
+}
+
+/* style anchors */
+a {
+  color: rgb(172, 169, 169);
+  font-weight: normal;
+  text-decoration: none;
+}
+
+/* style logo */
+.navbar .logo {
+  float: left;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 15px 20px;
+}
+
+/* style list achor */
+.navbar li a {
+  display: block;
+  padding: 0.5rem;
+}
+
+/* style menu items */
+.navbar li a:hover,
+.navbar .menu-btn:hover,
+.logo:hover {
+  color: orange;
+  transition: 0.3s;
+}
+
+/* style menu */
+.navbar .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+}
+
+/* style menu icon */
+.navbar .menu-icon {
+  cursor: pointer;
+  /* display: inline-block; */
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.navbar .menu-icon .navicon {
+  background: white;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background 0.2s ease-out;
+  width: 22px;
+}
+
+.navbar .menu-icon .navicon:before,
+.navbar .menu-icon .navicon:after {
+  background: white;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+
+.navbar .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.navbar .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* style menu button */
+.navbar .menu-btn {
+  display: none;
+}
+
+.navbar .menu-btn:checked ~ .menu {
+  max-height: 240px;
+}
+
+.navbar .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.navbar .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.navbar .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.navbar .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.navbar .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+div.navbar > ul {
+  padding-left: 15px;
+}
+
+@media (min-width: 48em) {
+  .navbar li {
+    float: left;
+    margin-left: 0.3rem;
+  }
+
+  .navbar li a {
+    padding: 20px 5px;
+  }
+
+  .navbar .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+    padding-right: 10px;
+  }
+
+  .navbar .menu-icon {
+    display: none;
+  }
+}
+</style>
