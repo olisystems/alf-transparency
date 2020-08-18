@@ -80,7 +80,7 @@ exports.findByUsernameDate = (req, res) => {
     })
 }
 
-// --- Proof of Concept controller functions ---
+// Proof of Concept controller functions
 exports.getHash = (req, res) => {
   const username = req.query.username
   const date = req.query.date
@@ -105,28 +105,33 @@ exports.getHash = (req, res) => {
 }
 
 exports.getProof = (req, res) => {
+  const username = req.query.username
+  const date = req.query.date
   Offer.find({
-    date: req.query.date,
+    date: date,
   })
     .then((data) => {
       // Find offer with specified username
       const leaf = data.find((data) => {
-        return data.username == req.query.username
+        return data.username == username
       }).hash
 
       // Extract offers from data and create leaves
       const leaves = data.map((x) => {
         return x.hash
       })
+
+      // Create tree
       const tree = new MerkleTree(leaves, SHA256)
 
       // Get proof
-      // Return empty array for single element tree!
+      // Return empty array for single leaf tree & for bad leaf!
       const proof = tree.getProof(leaf)
       res.send(proof)
     })
     .catch((err) => {
-      console.log('Error finding offers!', err)
-      res.send('ERROR: No offer with given username & date found.')
+      res.status(500).send({
+        message: `No hash found with username: ${username} and date: ${date}`,
+      })
     })
 }
