@@ -8,20 +8,26 @@ Implements Hashing-Dashboard on the basis of the ALF Flex Market with Vue.js and
 
 <!-- MDTOC maxdepth:6 firsth1:0 numbering:1 flatten:0 bullets:0 updateOnSave:1 -->
 
-1. [Table of Contents](#table-of-contents)
-2. [Description](#description)
-3. [Getting Started](#getting-started)  
-   &emsp;3.1. [Prerequisites](#prerequisites)  
-   &emsp;3.2. [Installing](#installing)
-4. [Code Coverage](#code-coverage)
-5. [Built With](#built-with)
-6. [Contributing](#contributing)
+1. [Table of Contents](#table-of-contents)   
+2. [Description](#description)   
+3. [Overview of the Stack](#overview-of-the-stack)   
+4. [Getting Started](#getting-started)   
+&emsp;4.1. [Prerequisites](#prerequisites)   
+5. [Built With](#built-with)   
+6. [Contributing](#contributing)   
 
 <!-- /MDTOC -->
 
 ## Description
 
 The current project creates hashes of the given document using [web3 sha3](https://web3js.readthedocs.io/en/v1.2.7/web3-utils.html#sha3) function and stores them on [Volta](https://energyweb.atlassian.net/wiki/spaces/EWF/pages/702677023/Chain%3A+Volta+Test+Network) test network.
+
+## Overview of the Stack
+
+- **MongoDB:** as data storage.
+- **Express.js:** as the server-side web framework for Node.js and will be used to mange all the backend related stuff.
+- **Vue.js:** as the JavaScript framework for the frontend and handling all the view-related stuff
+- **Node.js:** as the main engine for the backend
 
 ## Getting Started
 

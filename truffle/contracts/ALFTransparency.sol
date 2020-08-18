@@ -13,10 +13,11 @@ contract ALFTransparency {
         owner = msg.sender;
     }
 
-    /// create Hash struct with two fields
+    /// create Hash struct with three fields
     struct Hash {
         string rootHash;
         string user;
+        bool stored;
     }
 
     /// @dev Modifier to check that the caller is the owner of the contract
@@ -41,7 +42,8 @@ contract ALFTransparency {
         string memory _user,
         string memory _timestamp
     ) public onlyOwner {
-        hashes[_timestamp] = Hash(_rootHash, _user);
+        require(!hashes[_timestamp].stored, "Hash is already stored.");
+        hashes[_timestamp] = Hash(_rootHash, _user, true);
         emit NewHash(_rootHash, _user, _timestamp);
     }
 
