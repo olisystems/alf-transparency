@@ -25,8 +25,6 @@ export default {
     return {}
   },
   methods: {},
-
-  async created() {},
 }
 </script>
 <style scoped>
