@@ -1,17 +1,30 @@
 <template>
   <div id="app">
-    <Navbar />
+    <div class="navbar">
+      <a href class="logo">ALF Transparency Market</a>
+      <input class="menu-btn" type="checkbox" id="menu-btn" />
+      <label class="menu-icon" for="menu-btn">
+        <span class="navicon"></span>
+      </label>
+      <ul class="menu">
+        <li>
+          <router-link to="/">Create Offer</router-link>
+        </li>
+        <li>
+          <router-link to="/offers">Offers</router-link>
+        </li>
+        <li>
+          <router-link to="/verification">Verification</router-link>
+        </li>
+      </ul>
+    </div>
+    <router-view />
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar.vue'
-
 export default {
   name: 'app',
-  components: {
-    Navbar,
-  },
 }
 </script>
 
@@ -33,5 +46,9 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
+}
+
+.router-link-exact-active {
+  color: white;
 }
 </style>
