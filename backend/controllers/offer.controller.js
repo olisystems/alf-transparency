@@ -107,18 +107,21 @@ exports.getHash = (req, res) => {
 }
 
 exports.getProof = (req, res) => {
+  const username = req.query.username
+  const date = req.query.date
+
   Offer.find({
-    date: req.query.date,
+    date: date,
   })
     .then((data) => {
       // Find offer with specified username
       const leaf = data.find((data) => {
-        return data.username == req.query.username
+        return data.username == username;
       }).hash
 
       // Extract offers from data and create leaves
       const leaves = data.map((x) => {
-        return x.hash
+        return x.hash;
       })
       const tree = new MerkleTree(leaves, SHA256)
 
@@ -128,11 +131,47 @@ exports.getProof = (req, res) => {
       res.send(proof)
     })
     .catch((err) => {
-      console.log('Error finding offers!', err)
-      res.send('ERROR: No offer with given username & date found.')
+      res.status(500).send({
+        message: `Offer not found with username: ${username} and date: ${date}`,
+      })
     })
 }
 
 exports.storeRootHash = (req, res) => {
+  const date = req.query.date
 
+  Offer.find({
+    date: date,
+  })
+  .then((data) => {
+    if(!data.length) {
+      res.status(500).send({
+        message: `Offers not found for date: ${date}.`,
+      })
+      return;
+    }
+
+    // Extract offers from data and create leaves
+    const leaves = data.map((x) => {
+      return x.hash;
+    })
+    const tree = new MerkleTree(leaves, SHA256)
+    const rootHash = tree.getHexRoot()
+
+    ALFTransparency.storeRootHash(rootHash, "ALF_Demo", date)
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: `Root Hash for date ${date} could not be stored on-chain.`,
+        error: err
+      })
+    })
+  })
+  .catch((err) => {
+    res.status(500).send({
+      message: `Offers not found for date: ${date}`,
+    })
+  })
 }
