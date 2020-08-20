@@ -1,8 +1,10 @@
 const db = require('../models')
+const ALFTransparency = require('./ALFTransparency.controller')
 const Offer = db.offers
 const { MerkleTree } = require('merkletreejs')
 const SHA256 = require('crypto-js/sha256')
 const Base64 = require('crypto-js/enc-base64')
+
 
 // create and save a new Offer
 exports.create = (req, res) => {
@@ -129,4 +131,8 @@ exports.getProof = (req, res) => {
       console.log('Error finding offers!', err)
       res.send('ERROR: No offer with given username & date found.')
     })
+}
+
+exports.storeRootHash = (req, res) => {
+
 }
