@@ -3,16 +3,29 @@
     <div class="title">Create Offer</div>
     <div class="form">
       <form @submit.prevent="submitFile">
+        <!-- input username -->
         <label>
           Username:
-          <input type="text" id="username" v-model="username" required />
+          <input
+            type="text"
+            id="username"
+            v-model="username"
+            placeholder="Enter username"
+            required
+          />
         </label>
-
+        <!-- input date -->
         <label>
           Date:
-          <input type="text" id="date" v-model="date" required />
+          <input
+            type="text"
+            id="date"
+            v-model="date"
+            placeholder="Enter offer date"
+            required
+          />
         </label>
-
+        <!-- input file -->
         <label>
           File:
           <input
@@ -23,8 +36,32 @@
             required
           />
         </label>
-        <button type="submit">Upload</button>
+        <button class="button" type="submit">Upload</button>
       </form>
+    </div>
+
+    <!-- display success message -->
+    <div v-if="isUploaded" class="success">
+      <div class="message">
+        <button @click="close" type="button" class="close-btn">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+        <strong>Success!</strong>
+        <br />
+        The file {{ name }} is successfully saved to local storage!
+      </div>
+    </div>
+
+    <!-- display error message -->
+    <div v-else-if="isFailed" class="error">
+      <div class="message">
+        <button @click="close" type="button" class="close-btn">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+        <strong>Error!</strong>
+        <br />
+        Failed to upload file {{ name }}.
+      </div>
     </div>
   </div>
 </template>
@@ -36,20 +73,27 @@ export default {
   name: 'CreateOffer',
   data() {
     return {
-      username: '',
       date: '',
       file: '',
       hash: '',
+      name: '',
+      username: '',
       isUploaded: '',
       isFailed: '',
+      style: 'hidden',
     }
   },
   methods: {
     handleFileUpload() {
       let file = this.$refs.file.files[0]
-
+      // extract file name
+      this.name = file.name
       // check validity of CSV file
-      if (!file || file.type !== 'text/csv') return
+      if (!file || file.type !== 'text/csv') {
+        this.isUploaded = false
+        this.isFailed = true
+        this.reset()
+      }
 
       // invoke FileReader constructor
       const reader = new FileReader()
@@ -67,14 +111,14 @@ export default {
       // attach handler for error event
       reader.onerror = (evt) => {
         alert('Failed to read file!\n\n' + reader.error)
-        this.isFailed = true
         reader.abort()
       }
     },
 
     submitFile() {
+      this.isFailed = false
       this.isUploaded = true
-      console.log(this.hash);
+      console.log(this.hash)
       this.reset()
     },
 
@@ -83,6 +127,11 @@ export default {
       this.date = ''
       this.username = ''
       this.$refs.file.value = null
+    },
+
+    close() {
+      this.isUploaded = false
+      this.isFailed = false
     },
   },
 }
@@ -124,8 +173,9 @@ input {
   border: 1px solid #abaeaf;
 }
 
-button {
+.button {
   float: right;
+  outline: none;
   color: #fff;
   cursor: pointer;
   padding: 0.6rem;
@@ -140,8 +190,31 @@ button {
   transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-button:hover {
+.button:hover {
   background-color: #2f62c0;
   border: 1px solid #2f62c0;
+}
+
+/* style notification */
+.success {
+  background: #ddffdd;
+}
+
+.error {
+  background: #ffdddd;
+}
+
+.message {
+  margin: 1rem;
+  padding: 0.7rem 0;
+}
+
+.close-btn {
+  border: none;
+  float: right;
+  cursor: pointer;
+  padding: 0.5rem;
+  outline: none;
+  background-color: transparent;
 }
 </style>
