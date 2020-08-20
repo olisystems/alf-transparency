@@ -48,7 +48,7 @@
         </button>
         <strong>Success!</strong>
         <br />
-        The file {{ name }} is successfully saved to local storage!
+        The file <i><b>{{ name }}</b></i> is successfully saved to local storage!
       </div>
     </div>
 
@@ -60,7 +60,7 @@
         </button>
         <strong>Error!</strong>
         <br />
-        Failed to upload file {{ name }}.
+        Failed to upload file <i><b>{{ name }}</b></i>.
       </div>
     </div>
   </div>
@@ -115,10 +115,23 @@ export default {
       }
     },
 
+    saveOffer() {
+      let key = this.username + this.date
+      let offer = {
+        username: this.username,
+        date: this.date,
+        text: this.file,
+        hash: this.hash,
+      }
+      offer = JSON.stringify(offer)
+
+      localStorage.setItem(key, offer)
+    },
+
     submitFile() {
       this.isFailed = false
       this.isUploaded = true
-      console.log(this.hash)
+      this.saveOffer()
       this.reset()
     },
 
