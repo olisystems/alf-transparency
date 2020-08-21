@@ -163,9 +163,10 @@ exports.storeRootHash = (req, res) => {
       res.send(response);
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).send({
         message: `Root Hash for date ${date} could not be stored on-chain.`,
-        error: err
+        err: err.message
       })
     })
   })

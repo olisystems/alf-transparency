@@ -3,8 +3,9 @@ const fs = require('fs');
 const TruffleContract = require('@truffle/contract'); 
 const Web3 = require('web3');
 
-
-const DEVELOP = false;
+// If using Ganache, make sure to deploy the contract
+// each time you restart Ganache, using `truffle migrate`
+const DEVELOP = true;
 
 // Read Truffle config
 const truffleConfig = require('../../truffle/truffle-config.js');
@@ -42,10 +43,20 @@ function loadContract(file, provider) {
 
 exports.storeRootHash = async (rootHash, username, timestamp) => {
     // Read ALF contract in truffle contract form
-    const ALFTransparency = await loadContract(ALF_CONTRACT, ALFProvider);
-    let alfTransparencyContract = await ALFTransparency.deployed();
-    let accounts = await web3.eth.getAccounts();
-    return alfTransparencyContract.sendHash(rootHash, username, timestamp, { from: accounts[0] });
+    let ALFTransparency 
+    let alfTransparencyContract 
+    let accounts
+
+    return loadContract(ALF_CONTRACT, ALFProvider).then((result) => {
+        ALFTransparency = result;
+        return ALFTransparency.deployed();
+    }).then((result) => {
+        alfTransparencyContract = result;
+        return web3.eth.getAccounts();
+    }).then((result) => {
+        accounts = result;
+        return alfTransparencyContract.sendHash(rootHash, username, timestamp, { from: accounts[0] });
+    })
 }
 
 exports.getHash = async(timestamp) => {
