@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="title">Create Offer</div>
+    <div class="title">CREATE OFFER</div>
     <div class="form">
       <form @submit.prevent="submitFile">
         <!-- input username -->
@@ -48,7 +48,11 @@
         </button>
         <strong>Success!</strong>
         <br />
-        The file <i><b>{{ name }}</b></i> is successfully saved to local storage!
+        The file
+        <i>
+          <b>{{ name }}</b>
+        </i>
+        is successfully saved to local storage!
       </div>
     </div>
 
@@ -60,7 +64,11 @@
         </button>
         <strong>Error!</strong>
         <br />
-        Failed to upload file <i><b>{{ name }}</b></i>.
+        Failed to upload file
+        <i>
+          <b>{{ name }}</b>
+        </i>
+        .
       </div>
     </div>
   </div>
@@ -125,7 +133,7 @@ export default {
       }
       offer = JSON.stringify(offer)
 
-      localStorage.setItem(key, offer)
+      window.localStorage.setItem(key, offer)
     },
 
     submitFile() {
@@ -152,10 +160,10 @@ export default {
 
 <style>
 .container {
-  text-align: left;
-  max-width: 500px;
   margin: auto;
+  max-width: 40%;
   margin-top: 4rem;
+  text-align: left;
 }
 
 .title {
