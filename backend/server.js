@@ -6,7 +6,9 @@ const app = express()
 
 // Set CORS options
 const corsOptions = {
-  origin: 'http://localhost:8081',
+  // allow one domain
+  // origin: 'http://localhost:8080',
+  origin: '*',
   optionsSuccessStatus: 200,
 }
 app.use(cors(corsOptions))
