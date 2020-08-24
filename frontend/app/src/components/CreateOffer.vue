@@ -76,9 +76,11 @@
 
 <script>
 import SHA256 from 'crypto-js/sha256'
+const axios = require('axios')
 
 export default {
   name: 'CreateOffer',
+
   data() {
     return {
       date: '',
@@ -91,6 +93,7 @@ export default {
       style: 'hidden',
     }
   },
+
   methods: {
     handleFileUpload() {
       let file = this.$refs.file.files[0]
@@ -131,9 +134,22 @@ export default {
         text: this.file,
         hash: this.hash,
       }
+      this.postOffer(offer)
       offer = JSON.stringify(offer)
 
       window.localStorage.setItem(key, offer)
+    },
+
+    postOffer(offer) {
+      let url = 'http://127.0.0.1:3000/api/offers/'
+      axios
+        .post(url, offer)
+        .then(function (response) {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     },
 
     submitFile() {
