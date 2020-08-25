@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const cron = require("node-cron");
+// const cron = require("node-cron");
 
 const app = express()
 
@@ -40,5 +40,5 @@ db.mongoose
     process.exit()
   })
 
-const cronStoreRootHash = require('./cron_jobs/storeRootHash.cron')
-cron.schedule("00 17 * * *", cronStoreRootHash)
+// const cronStoreRootHash = require('./cron_jobs/storeRootHash.cron')
+// cron.schedule("00 17 * * *", cronStoreRootHash)
