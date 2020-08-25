@@ -53,6 +53,8 @@
           <b>{{ name }}</b>
         </i>
         is successfully saved to local storage!
+        <br />
+        {{ dbResponse.code }}, {{ dbResponse.status }}
       </div>
     </div>
 
@@ -75,7 +77,7 @@
 </template>
 
 <script>
-import SHA256 from 'crypto-js/sha256'
+const SHA256 = require('crypto-js/sha256')
 const axios = require('axios')
 
 export default {
@@ -87,6 +89,7 @@ export default {
       file: '',
       hash: '',
       name: '',
+      dbResponse: '',
       username: '',
       isUploaded: '',
       isFailed: '',
@@ -99,6 +102,9 @@ export default {
       let file = this.$refs.file.files[0]
       // extract file name
       this.name = file.name
+      // hide the message to avoid having
+      // unloaded file name
+      this.isUploaded = false
       // check validity of CSV file
       if (!file || file.type !== 'text/csv') {
         this.isUploaded = false
@@ -127,7 +133,7 @@ export default {
     },
 
     saveOffer() {
-      let key = this.username + this.date
+      let key = this.username + '|' + this.date
       let offer = {
         username: this.username,
         date: this.date,
@@ -141,13 +147,16 @@ export default {
     },
 
     postOffer(offer) {
-      let url = 'http://127.0.0.1:3000/api/offers/'
+      let url = 'http://127.0.0.1:3001/api/offers/'
       axios
         .post(url, offer)
-        .then(function (response) {
-          console.log(response)
+        .then((response) => {
+          this.dbResponse = {
+            code: response.status,
+            status: response.statusText,
+          }
         })
-        .catch(function (error) {
+        .catch((error) => {
           console.log(error)
         })
     },
