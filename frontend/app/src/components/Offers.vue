@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="container">
     <div class="title">OFFERS</div>
     <div class="offers">
       <ul class="offer-list">
@@ -64,7 +64,7 @@ export default {
       // get list item contents
       let info = event.target.innerHTML.trim()
       let infoArr = info.split('|')
-      this.key = infoArr[0].trim() + infoArr[1].trim()
+      this.key = infoArr[0].trim() + '|' + infoArr[1].trim()
       // find & display offer for key
       this.offers.forEach((offer) => {
         if (offer.key === this.key) {
@@ -97,13 +97,6 @@ export default {
 </script>
 
 <style>
-.main {
-  margin: auto;
-  max-width: 60%;
-  margin-top: 4rem;
-  text-align: left;
-}
-
 .offers {
   margin-top: 2rem;
   border-radius: 2px;
@@ -121,7 +114,10 @@ export default {
 }
 
 .offer-list > li {
-  padding: 1.3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 1.2rem;
   font-size: 1.1em;
   background-color: rgb(241, 237, 237);
   border-left: 5px solid rgb(0, 128, 194);
