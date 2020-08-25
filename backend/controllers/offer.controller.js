@@ -123,14 +123,15 @@ exports.getProof = (req, res) => {
 
       // Create tree
       const tree = new MerkleTree(leaves, SHA256)
+      const root = tree.getRoot().toString('hex')
 
       // Get proof
       // Return empty array for single leaf tree & for bad leaf!
       const proof = tree.getProof(leaf)
-      res.send(proof)
+      res.send({ pf: proof, r: root})
     })
     .catch((err) => {
-      res.status(500).send({
+      res.send({
         message: `No hash found with username: ${username} and date: ${date}`,
       })
     })
