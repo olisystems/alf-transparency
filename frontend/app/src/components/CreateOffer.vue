@@ -186,7 +186,7 @@ export default {
 <style>
 .container {
   margin: auto;
-  max-width: 40%;
+  width: 40%;
   margin-top: 4rem;
   text-align: left;
 }
@@ -247,7 +247,11 @@ input {
 }
 
 .error {
-  background: #ffdddd;
+  background: #f0bcbc;
+}
+
+.not-found{
+  background: #ffddab;
 }
 
 .message {
