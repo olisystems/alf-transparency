@@ -7,7 +7,9 @@ const app = express()
 
 // Set CORS options
 const corsOptions = {
-  origin: 'http://localhost:8081',
+  // allow one domain
+  // origin: 'http://localhost:8080',
+  origin: '*',
   optionsSuccessStatus: 200,
 }
 app.use(cors(corsOptions))
@@ -21,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 require('./routes/offer.routes')(app)
 
 // Set port, listen for requests
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`)
 })
