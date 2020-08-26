@@ -82,7 +82,7 @@ exports.findByUsernameDate = (req, res) => {
     })
 }
 
-// --- Proof of Concept controller functions ---
+// Proof of Concept controller functions
 exports.getHash = (req, res) => {
   const username = req.query.username
   const date = req.query.date
@@ -123,10 +123,12 @@ exports.getProof = (req, res) => {
       const leaves = data.map((x) => {
         return x.hash;
       })
+
+      // Create tree
       const tree = new MerkleTree(leaves, SHA256)
 
       // Get proof
-      // Return empty array for single element tree!
+      // Return empty array for single leaf tree & for bad leaf!
       const proof = tree.getProof(leaf)
       res.send(proof)
     })
