@@ -10,11 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@truffle/contract": "^4.2.19",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "merkletreejs": "^0.2.9",
-    "mongoose": "^5.9.28"
+    "mongoose": "^5.9.28",
+    "node-cron": "^2.0.3"
   }
 }
