@@ -2,9 +2,17 @@ const HDWalletProvider = require('@truffle/hdwallet-provider')
 const NonceTrackerSubprovider = require('web3-provider-engine/subproviders/nonce-tracker')
 const fs = require('fs')
 const path = require('path')
-const MNEMONIC = fs.readFileSync(path.resolve(__dirname, './.mnemonic')).toString().trim()
+const MNEMONIC = fs
+  .readFileSync(path.resolve(__dirname, './.mnemonic'))
+  .toString()
+  .trim()
 var ENDPOINT = 'https://volta-rpc.energyweb.org'
 module.exports = {
+  // custom path for smart contracts metadata
+  contracts_build_directory: path.join(
+    __dirname,
+    '../app/src/assets/js/contracts',
+  ),
   networks: {
     development: {
       host: '127.0.0.1',
