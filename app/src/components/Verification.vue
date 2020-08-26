@@ -70,10 +70,14 @@
 const { MerkleTree } = require('merkletreejs')
 const SHA256 = require('crypto-js/sha256')
 const axios = require('axios')
+import web3 from '@/assets/js/web3'
+import Contract from '@/assets/js/contractInstance'
+
 export default {
   name: 'Verification',
   data() {
     return {
+      contract: '',
       users: [],
       selected: '',
       response: '',
@@ -87,16 +91,22 @@ export default {
       this.users = Object.keys(window.localStorage)
     },
 
-    verify() {
+    // get eth address for given cpId
+    async getRootHash(timestamp) {
+      let root = await this.contract.methods.getHash(timestamp).call()
+      return root
+    },
+
+    async verify() {
       let url = 'http://127.0.0.1:3001/api/offers/proof'
       // retrieve username and date from selected key
-      const tree = new MerkleTree([], SHA256)
-      const localRoot = tree.getRoot().toString('hex')
       let user = this.selected.split('|')
       let localLeaf = localStorage.getItem(this.selected)
-      let l = JSON.parse(localLeaf).hash
+      let leaf = JSON.parse(localLeaf).hash
       let username = user[0]
       let date = user[1]
+      const tree = new MerkleTree([], SHA256)
+      const root = this.getRootHash(date)
       axios
         .get(url, {
           params: {
@@ -112,12 +122,11 @@ export default {
             this.response = username
           } else {
             //let proof = res.data.pf
-            const proof = res.data.pf.map((object) => {
+            const proof = res.data.map((object) => {
               object.data = Buffer.from(object.data.data)
               return object
             })
-            let root = res.data.r
-            const result = tree.verify(proof, l, root)
+            const result = tree.verify(proof, leaf, root)
 
             if (result) {
               this.success = true
@@ -147,7 +156,8 @@ export default {
       this.success = false
     },
   },
-  created() {
+  async created() {
+    this.contract = await Contract()
     this.getOffers()
   },
 }

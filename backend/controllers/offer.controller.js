@@ -131,7 +131,7 @@ exports.getProof = (req, res) => {
       // Get proof
       // Return empty array for single leaf tree & for bad leaf!
       const proof = tree.getProof(leaf)
-      res.send({ pf: proof, r: root})
+      res.send(proof)
     })
     .catch((err) => {
       res.send({
