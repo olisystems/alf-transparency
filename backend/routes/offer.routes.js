@@ -18,6 +18,7 @@ module.exports = (app) => {
   // @params: GET query ?username=XYZ&date=XYZ
   router.get('/hash', offers.getHash)
   router.get('/proof', offers.getProof)
+  router.get('/rootHashTrigger', offers.storeRootHash)
 
   app.use('/api/offers', router)
 }

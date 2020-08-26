@@ -1,7 +1,8 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider')
 const NonceTrackerSubprovider = require('web3-provider-engine/subproviders/nonce-tracker')
 const fs = require('fs')
-const MNEMONIC = fs.readFileSync('.mnemonic').toString().trim()
+const path = require('path')
+const MNEMONIC = fs.readFileSync(path.resolve(__dirname, './.mnemonic')).toString().trim()
 var ENDPOINT = 'https://volta-rpc.energyweb.org'
 module.exports = {
   networks: {
