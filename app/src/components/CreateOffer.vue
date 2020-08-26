@@ -18,10 +18,10 @@
         <label>
           Date:
           <input
-            type="text"
+            type="date"
             id="date"
             v-model="date"
-            placeholder="Enter offer date"
+            placeholder="dd/mm/yyyy"
             required
           />
         </label>
@@ -250,7 +250,7 @@ input {
   background: #f0bcbc;
 }
 
-.not-found{
+.not-found {
   background: #ffddab;
 }
 
