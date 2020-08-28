@@ -2,9 +2,9 @@
   <div class="container">
     <div class="title">VERIFY OFFER</div>
 
-    <div class="form">
+    <!-- <div class="form">
       <form @submit.prevent="verify">
-        <!-- select username -->
+        
 
         <select v-model.trim="selected" required>
           <option disabled value="">Please select one</option>
@@ -14,6 +14,25 @@
         </select>
 
         <button class="button" type="submit">Verify</button>
+      </form>
+    </div> -->
+
+    <div class="form">
+      <form @submit.prevent="sendRootHash">
+        <!-- select username -->
+
+        <label>
+          <!-- Date: -->
+          <input
+            type="date"
+            id="date"
+            v-model="date"
+            placeholder="dd-mm-yyyy"
+            required
+          />
+        </label>
+
+        <button class="button" type="submit">Send Hash</button>
       </form>
     </div>
 
@@ -84,6 +103,7 @@ export default {
       notFound: '',
       success: '',
       failure: '',
+      date: '',
     }
   },
   methods: {
@@ -97,6 +117,22 @@ export default {
       return root
     },
 
+    async sendRootHash() {
+      let url = 'http://127.0.0.1:3001/api/offers/rootHashTrigger'
+      axios
+        .get(url, {
+          params: {
+            date: this.date,
+          },
+        })
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+
     async verify() {
       let url = 'http://127.0.0.1:3001/api/offers/proof'
       // retrieve username and date from selected key
@@ -105,6 +141,7 @@ export default {
       let leaf = JSON.parse(localLeaf).hash
       let username = user[0]
       let date = user[1]
+      console.log(date)
       const tree = new MerkleTree([], SHA256)
       const root = this.getRootHash(date)
       axios
@@ -115,32 +152,33 @@ export default {
           },
         })
         .then((res) => {
-          if ('message' in res.data) {
-            this.notFound = true
-            this.success = false
-            this.failure = false
-            this.response = username
-          } else {
-            //let proof = res.data.pf
-            const proof = res.data.map((object) => {
-              object.data = Buffer.from(object.data.data)
-              return object
-            })
-            const result = tree.verify(proof, leaf, root)
+          console.log(res)
+          // if ('message' in res.data) {
+          //   this.notFound = true
+          //   this.success = false
+          //   this.failure = false
+          //   this.response = username
+          // } else {
+          //   //let proof = res.data.pf
+          //   const proof = res.data.map((object) => {
+          //     object.data = Buffer.from(object.data.data)
+          //     return object
+          //   })
+          //   const result = tree.verify(proof, leaf, root)
 
-            if (result) {
-              this.success = true
-              this.notFound = false
-              this.failure = false
-              this.response = username
-            } else {
-              this.failure = true
-              this.success = false
-              this.notFound = false
+          //   if (result) {
+          //     this.success = true
+          //     this.notFound = false
+          //     this.failure = false
+          //     this.response = username
+          //   } else {
+          //     this.failure = true
+          //     this.success = false
+          //     this.notFound = false
 
-              this.response = username
-            }
-          }
+          //     this.response = username
+          //   }
+          // }
         })
         .catch((error) => {
           console.log(error)
