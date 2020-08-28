@@ -113,6 +113,8 @@ export default {
           this.users.push(value.username)
         }
       })
+      // remove duplicates
+      this.users = Array.from(new Set(this.users))
     },
 
     currentOffer() {
