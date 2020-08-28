@@ -161,23 +161,31 @@ export default {
   box-shadow: 0 10px 30px rgba(51, 51, 51, 0.1);
 }
 
+select {
+  padding: 0.7rem !important;
+  margin-top: 2rem !important;
+  outline: none;
+}
+
 .offer-list {
   margin: 0;
   padding: 0;
-  height: 400px;
+  height: 200px;
   overflow-y: auto;
   list-style-type: none;
   text-align: left;
+  background: rgb(240, 239, 239);
 }
 
-.offer-list > li {
+.sub-list > li,
+.list-title {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  padding: 1.2rem;
-  font-size: 1.1em;
+  padding: 0.7rem;
+  font-size: 1em;
   background-color: rgb(241, 237, 237);
-  border-left: 5px solid rgb(0, 128, 194);
+  border-left: 3px solid rgb(0, 128, 194);
   margin-bottom: 2px;
   color: #3e5252;
   cursor: pointer;
@@ -189,18 +197,60 @@ export default {
   text-align: center;
 }
 
-.text {
-  margin-top: 4rem;
+.contents {
+  padding: 1.2rem;
+  margin: 2rem 0rem;
+  height: 360px;
   border-radius: 2px;
-  border: 1px solid rgb(226, 226, 224);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(192, 192, 191);
+}
+
+.csv {
+  padding: 0.5rem;
+  margin-top: 1rem;
+  height: 200px;
+  overflow-y: auto;
+  border: 1px solid rgb(192, 192, 191);
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+span {
+  background: lightcoral;
+  padding: 0.7rem 0.5rem;
+}
+
+.hash,
+ol > li {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: auto;
 }
 
 ol > li {
   list-style-type: none;
-  padding: 0.3rem;
+  margin-left: -2.2rem;
+}
+
+h4 {
+  font-size: calc(0.5vw + 0.7vh + 1vmin);
+  margin-bottom: 0.7rem;
+  margin-top: 0.7rem;
+  color: #394f7c;
 }
 
 .active-offer {
   background-color: #bae5fa !important;
+}
+
+.verify-button {
+  margin: 1rem 0rem;
+  float: right;
 }
 </style>
