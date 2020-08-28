@@ -4,7 +4,7 @@ const Offer = db.offers
 const { MerkleTree } = require('merkletreejs')
 const SHA256 = require('crypto-js/sha256')
 const Base64 = require('crypto-js/enc-base64')
-
+const Contract = require('../service/blockchain')
 
 // create and save a new Offer
 exports.create = (req, res) => {
@@ -116,17 +116,16 @@ exports.getProof = (req, res) => {
     .then((data) => {
       // Find offer with specified username
       const leaf = data.find((data) => {
-        return data.username == username;
+        return data.username == username
       }).hash
 
       // Extract offers from data and create leaves
-      const leaves = data.map((x) => {
-        return x.hash;
+      const leaves = data.map((leaf) => {
+        return leaf.hash
       })
 
       // Create tree
       const tree = new MerkleTree(leaves, SHA256)
-      const root = tree.getRoot().toString('hex')
 
       // Get proof
       // Return empty array for single leaf tree & for bad leaf!
@@ -141,41 +140,43 @@ exports.getProof = (req, res) => {
 }
 
 exports.storeRootHash = (req, res) => {
-  const date = req.query.date
-
+  const query = req.query.date
   Offer.find({
-    date: date,
+    date: query,
   })
-  .then((data) => {
-    if(!data.length) {
-      res.status(500).send({
-        message: `Offers not found for date: ${date}.`,
+    .then((data) => {
+      if (!data.length) {
+        res.send({
+          message: `Offers not found for date: ${query}.`,
+        })
+        return
+      }
+
+      // Extract offers from data and create leaves
+      const leaves = data.map((leaf) => {
+        return leaf.hash
       })
-      return;
-    }
+      const tree = new MerkleTree(leaves, SHA256)
+      const rootHash = tree.getHexRoot()
+      const address = '0x1492c3f6675867b77fF3Cd8252C2B8e943dA3E2c'
 
-    // Extract offers from data and create leaves
-    const leaves = data.map((x) => {
-      return x.hash;
-    })
-    const tree = new MerkleTree(leaves, SHA256)
-    const rootHash = tree.getHexRoot()
-
-    ALFTransparency.storeRootHash(rootHash, "ALF_Demo", date)
-    .then((response) => {
-      res.send(response);
+      Contract.methods
+        .sendHash(rootHash, 'ALF_Demo', query)
+        .send({ from: address, gas: 3000000 })
+        .then((response) => {
+          res.send(response)
+        })
+        .catch((err) => {
+          console.log(err)
+          res.send({
+            message: `Root Hash for date ${query} could not be stored on-chain.`,
+            err: err.message,
+          })
+        })
     })
     .catch((err) => {
-      console.log(err);
-      res.status(500).send({
-        message: `Root Hash for date ${date} could not be stored on-chain.`,
-        err: err.message
+      res.send({
+        message: `Error in storing offer for date: ${date}`,
       })
     })
-  })
-  .catch((err) => {
-    res.status(500).send({
-      message: `Offers not found for date: ${date}`,
-    })
-  })
 }
