@@ -33,6 +33,30 @@
       <!-- show place mark when no user is selected -->
       <div v-else>Select a user to see offer list</div>
     </div>
+
+    <div v-if="csv.length > 0" class="contents">
+      <div class="hash" v-tooltip="hash">
+        <div class="content-header">
+          <h4>Hash</h4>
+          <span>{{ status }}</span>
+        </div>
+
+        {{ hash }}
+      </div>
+
+      <div class="csv">
+        <h4>CSV</h4>
+        <ol>
+          <li v-for="(data, index) in csv" :key="index">
+            {{ data }}
+          </li>
+        </ol>
+      </div>
+
+      <div class="verify-button">
+        <button type="submit" class="button">Verify</button>
+      </div>
+    </div>
     <div class="offers">
       <ul class="offer-list">
         <li class="list-title">Username | Date | Hash</li>
