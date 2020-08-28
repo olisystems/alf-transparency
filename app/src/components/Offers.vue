@@ -8,6 +8,31 @@
       </option>
     </select>
 
+    <!-- display offer list for selected user -->
+    <div>
+      <!-- show offers for selected user -->
+      <div v-if="offers.length > 0">
+        <ul class="offer-list">
+          <li class="list-title">Username | Date</li>
+          <li v-for="(offer, index) in offers" :key="index">
+            <!-- display all offers for a selected user -->
+            <div v-if="offer.date.length > 0" class="sub-list">
+              <li
+                v-for="(item, index) in offer.date"
+                :key="index"
+                @click="showOffer"
+              >
+                {{ offer.username }} | {{ item }}
+              </li>
+            </div>
+            <!-- display when user has only one offer -->
+            <div v-else>{{ offer.username }} | {{ offer.date }}</div>
+          </li>
+        </ul>
+      </div>
+      <!-- show place mark when no user is selected -->
+      <div v-else>Select a user to see offer list</div>
+    </div>
     <div class="offers">
       <ul class="offer-list">
         <li class="list-title">Username | Date | Hash</li>
