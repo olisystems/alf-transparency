@@ -1,6 +1,13 @@
 <template>
   <div class="container">
     <div class="title">OFFERS</div>
+    <select v-model.trim="selected" required @change="currentOffer">
+      <option disabled value="">Select a user</option>
+      <option v-for="(user, index) in users" :key="index">
+        {{ user }}
+      </option>
+    </select>
+
     <div class="offers">
       <ul class="offer-list">
         <li class="list-title">Username | Date | Hash</li>
@@ -34,6 +41,7 @@ export default {
   name: 'Offers',
   data() {
     return {
+      users: [],
       offers: [],
       key: '',
       csv: [],
