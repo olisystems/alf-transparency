@@ -57,7 +57,8 @@
         <button type="submit" class="button">Verify</button>
       </div>
     </div>
-    <div class="offers">
+    <!-- 
+      <div class="offers">
       <ul class="offer-list">
         <li class="list-title">Username | Date | Hash</li>
         <li
@@ -71,7 +72,7 @@
       </ul>
     </div>
 
-    <!-- display CSV for selected offer -->
+    
     <div class="text" v-if="display">
       <button class="close-btn" @click="clear">
         <span aria-hidden="true">&#10005;</span>
@@ -82,6 +83,7 @@
         </li>
       </ol>
     </div>
+    -->
   </div>
 </template>
 
@@ -90,63 +92,88 @@ export default {
   name: 'Offers',
   data() {
     return {
+      entries: '',
+      selected: '',
       users: [],
       offers: [],
       key: '',
       csv: [],
       display: '',
+      hash: '',
+      status: 'Un-verified',
     }
   },
   methods: {
     getOffers() {
-      let entries = Object.entries(window.localStorage)
-      entries.forEach((entry) => {
-        // check for webpack dev server entry
+      this.entries = Object.entries(window.localStorage)
+
+      this.entries.forEach((entry) => {
         if (entry[0] != 'loglevel:webpack-dev-server') {
           let value = JSON.parse(entry[1])
-          let obj = {
-            key: entry[0],
-            username: value.username,
-            date: value.date,
-            hash: value.hash,
-            text: value.text,
-          }
-          this.offers.push(obj)
+          this.users.push(value.username)
         }
       })
     },
 
-    displayCSV() {
-      this.display = true
-      // get list item contents
-      let info = event.target.innerHTML.trim()
+    currentOffer() {
+      this.hash = ''
+      this.csv = []
+      this.offers = []
+      this.entries.forEach((entry) => {
+        if (entry[0] != 'loglevel:webpack-dev-server') {
+          let value = JSON.parse(entry[1])
+
+          if (value.username === this.selected) {
+            let index = this.offers.findIndex(
+              (offer) => offer.username === this.selected,
+            )
+            if (index === -1) {
+              this.offers.push({
+                key: [value.key],
+                username: value.username,
+                date: [value.date],
+                hash: [value.hash],
+                text: [value.text],
+              })
+            } else {
+              this.offers[index].date.push(value.date)
+              this.offers[index].hash.push(value.hash)
+              this.offers[index].text.push(value.text)
+            }
+          }
+        }
+      })
+
+      document.querySelectorAll('.sub-list > li').forEach((li) => {
+        li.classList.remove('active-offer')
+      })
+    },
+
+    showOffer() {
+      let info = event.target.innerHTML
       let infoArr = info.split('|')
       this.key = infoArr[0].trim() + '|' + infoArr[1].trim()
       // find & display offer for key
-      this.offers.forEach((offer) => {
-        if (offer.key === this.key) {
-          let rows = offer.text.split('\n')
+      this.entries.forEach((entry) => {
+        if (entry[0] === this.key) {
+          let data = JSON.parse(entry[1])
+          let rows = data.text.split('\n')
           this.csv = []
           this.csv.push(...rows)
+          this.hash = data.hash
         }
       })
 
       // removing the background color for ul-selected items
-      document.querySelectorAll('.offer-list > li').forEach((li) => {
+      document.querySelectorAll('.sub-list > li').forEach((li) => {
         li.classList.remove('active-offer')
       })
       // add background to selected account
       event.target.classList.add('active-offer')
     },
-
-    clear() {
-      this.display = false
-      // removing the background color for ul-selected items
-      document.querySelectorAll('.offer-list > li').forEach((li) => {
-        li.classList.remove('active-offer')
-      })
-    },
   },
+
+  
   created() {
     this.getOffers()
   },
