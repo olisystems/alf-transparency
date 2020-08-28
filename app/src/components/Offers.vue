@@ -54,40 +54,18 @@
       </div>
 
       <div class="verify-button">
-        <button type="submit" class="button">Verify</button>
+        <button type="button" class="button" @click="verify">Verify</button>
       </div>
     </div>
-    <!-- 
-      <div class="offers">
-      <ul class="offer-list">
-        <li class="list-title">Username | Date | Hash</li>
-        <li
-          v-for="(data, index) in offers"
-          v-bind:key="index"
-          @click="displayCSV"
-        >
-          {{ data.username }} | {{ data.date }} |
-          {{ data.hash }}
-        </li>
-      </ul>
-    </div>
-
-    
-    <div class="text" v-if="display">
-      <button class="close-btn" @click="clear">
-        <span aria-hidden="true">&#10005;</span>
-      </button>
-      <ol>
-        <li v-for="(data, index) in csv" :key="index">
-          {{ data }}
-        </li>
-      </ol>
-    </div>
-    -->
   </div>
 </template>
 
 <script>
+const { MerkleTree } = require('merkletreejs')
+const SHA256 = require('crypto-js/sha256')
+const axios = require('axios')
+import web3 from '@/assets/js/web3'
+import Contract from '@/assets/js/contractInstance'
 export default {
   name: 'Offers',
   data() {
@@ -104,6 +82,7 @@ export default {
     }
   },
   methods: {
+    // get locally stored offers
     getOffers() {
       this.entries = Object.entries(window.localStorage)
 
@@ -117,6 +96,7 @@ export default {
       this.users = Array.from(new Set(this.users))
     },
 
+    // keep record of offers for a user
     currentOffer() {
       this.hash = ''
       this.csv = []
@@ -151,7 +131,10 @@ export default {
       })
     },
 
+    // display selected offer
     showOffer() {
+      // clear status for new selection
+      this.status = 'Un-verified'
       let info = event.target.innerHTML
       let infoArr = info.split('|')
       this.key = infoArr[0].trim() + '|' + infoArr[1].trim()
@@ -173,10 +156,57 @@ export default {
       // add background to selected account
       event.target.classList.add('active-offer')
     },
+
+    // verifiy selected offer
+    async verify() {
+      let url = 'http://127.0.0.1:3001/api/offers/proof'
+      // retrieve username and date from selected key
+      let user = this.key.split('|')
+      let username = user[0]
+      let date = user[1]
+      let leaf = this.hash
+
+      const tree = new MerkleTree([], SHA256)
+      let root = await this.getRootHash(date)
+      root = root[0]
+      axios
+        .get(url, {
+          params: {
+            username: username,
+            date: date,
+          },
+        })
+        .then((res) => {
+          if ('message' in res.data) {
+            this.status = 'Hash Not Found'
+          } else {
+            //let proof = res.data.pf
+            const proof = res.data.map((object) => {
+              object.data = Buffer.from(object.data.data)
+              return object
+            })
+            const result = tree.verify(proof, leaf, root)
+            if (result) {
+              this.status = 'Verified'
+            } else {
+              this.status = 'Verification Failed'
+            }
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+
+    // get merkle root hash
+    async getRootHash(timestamp) {
+      let root = await this.contract.methods.getHash(timestamp).call()
+      return root
+    },
   },
 
-  
-  created() {
+  async created() {
+    this.contract = await Contract()
     this.getOffers()
   },
 }
