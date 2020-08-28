@@ -5,7 +5,7 @@
       <form @submit.prevent="submitFile">
         <!-- input username -->
         <label>
-          Username:
+          <!-- Username: -->
           <input
             type="text"
             id="username"
@@ -16,18 +16,19 @@
         </label>
         <!-- input date -->
         <label>
-          Date:
+          <!-- Date: -->
           <input
             type="date"
             id="date"
             v-model="date"
-            placeholder="dd/mm/yyyy"
+            :format="dateFormat"
+            placeholder="dd-mm-yyyy"
             required
           />
         </label>
         <!-- input file -->
         <label>
-          File:
+          <!-- File: -->
           <input
             type="file"
             id="file"
@@ -89,6 +90,7 @@ export default {
       file: '',
       hash: '',
       name: '',
+      dateFormat: 'dd-mm-yyyy',
       dbResponse: '',
       username: '',
       isUploaded: '',
@@ -202,8 +204,8 @@ export default {
 .form {
   margin: auto;
   margin-top: 2rem;
-  border: 0.5px solid #bebebe;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
+  border: 0.5px solid #dbd9d9;
+  /* box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36); */
   padding: 5% 4%;
   background: #ffffff;
   display: flex;
@@ -213,10 +215,13 @@ export default {
 input {
   width: 100%;
   padding: 0.7rem;
+  outline: none;
   margin: 1rem auto;
   border-radius: 1px;
   box-sizing: border-box;
-  border: 1px solid #abaeaf;
+  border: none;
+  border-bottom: 1px solid #abaeaf;
+  box-shadow: 0 0 0 30px white inset !important;
 }
 
 .button {
