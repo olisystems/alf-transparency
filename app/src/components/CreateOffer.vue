@@ -248,15 +248,15 @@ input {
 
 /* style notification */
 .success {
-  background: #ddffdd;
+  background: rgb(128, 240, 137);
 }
 
 .error {
-  background: #f0bcbc;
+  background: rgb(233, 95, 95);
 }
 
 .not-found {
-  background: #ffddab;
+  background: rgb(240, 191, 128);
 }
 
 .message {
