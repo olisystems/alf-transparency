@@ -2,10 +2,8 @@
   <div class="container">
     <div class="title">OFFERS</div>
     <select v-model.trim="selected" required @change="currentOffer">
-      <option disabled value="">Select a user</option>
-      <option v-for="(user, index) in users" :key="index">
-        {{ user }}
-      </option>
+      <option disabled value>Select a user</option>
+      <option v-for="(user, index) in users" :key="index">{{ user }}</option>
     </select>
 
     <!-- display offer list for selected user -->
@@ -21,9 +19,7 @@
                 v-for="(item, index) in offer.date"
                 :key="index"
                 @click="showOffer"
-              >
-                {{ offer.username }} | {{ item }}
-              </li>
+              >{{ offer.username }} | {{ item }}</li>
             </div>
             <!-- display when user has only one offer -->
             <div v-else>{{ offer.username }} | {{ offer.date }}</div>
@@ -40,16 +36,13 @@
           <h4>Hash</h4>
           <span>{{ status }}</span>
         </div>
-
         {{ hash }}
       </div>
 
       <div class="csv">
         <h4>CSV</h4>
         <ol>
-          <li v-for="(data, index) in csv" :key="index">
-            {{ data }}
-          </li>
+          <li v-for="(data, index) in csv" :key="index">{{ data }}</li>
         </ol>
       </div>
 
@@ -57,58 +50,72 @@
         <button type="button" class="button" @click="verify">Verify</button>
       </div>
     </div>
+
+    <div v-if="rootHashError" class="error">
+      <div class="message">
+        <strong>Error!</strong>
+        <br />No Merkle root hash found for
+        <i>
+          <b>{{ date }}</b>
+        </i>
+        .
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-const { MerkleTree } = require('merkletreejs')
-const SHA256 = require('crypto-js/sha256')
-const axios = require('axios')
-import web3 from '@/assets/js/web3'
-import Contract from '@/assets/js/contractInstance'
+const { MerkleTree } = require("merkletreejs");
+const SHA256 = require("crypto-js/sha256");
+const axios = require("axios");
+import web3 from "@/assets/js/web3";
+import Contract from "@/assets/js/contractInstance";
 export default {
-  name: 'Offers',
+  name: "Offers",
   data() {
     return {
-      entries: '',
-      selected: '',
+      entries: "",
+      selected: "",
       users: [],
       offers: [],
-      key: '',
+      key: "",
+      date: "",
       csv: [],
-      display: '',
-      hash: '',
-      status: 'Un-verified',
-    }
+      display: "",
+      hash: "",
+      status: "Un-verified",
+      rootHashError: "",
+    };
   },
   methods: {
     // get locally stored offers
     getOffers() {
-      this.entries = Object.entries(window.localStorage)
+      this.entries = Object.entries(window.localStorage);
 
       this.entries.forEach((entry) => {
-        if (entry[0] != 'loglevel:webpack-dev-server') {
-          let value = JSON.parse(entry[1])
-          this.users.push(value.username)
+        if (entry[0] != "loglevel:webpack-dev-server") {
+          let value = JSON.parse(entry[1]);
+          this.users.push(value.username);
         }
-      })
+      });
       // remove duplicates
-      this.users = Array.from(new Set(this.users))
+      this.users = Array.from(new Set(this.users));
     },
 
     // keep record of offers for a user
     currentOffer() {
-      this.hash = ''
-      this.csv = []
-      this.offers = []
+      this.hash = "";
+      this.csv = [];
+      this.offers = [];
+      this.rootHashError = false;
       this.entries.forEach((entry) => {
-        if (entry[0] != 'loglevel:webpack-dev-server') {
-          let value = JSON.parse(entry[1])
+        if (entry[0] != "loglevel:webpack-dev-server") {
+          let value = JSON.parse(entry[1]);
 
           if (value.username === this.selected) {
             let index = this.offers.findIndex(
-              (offer) => offer.username === this.selected,
-            )
+              (offer) => offer.username === this.selected
+            );
             if (index === -1) {
               this.offers.push({
                 key: [value.key],
@@ -116,100 +123,106 @@ export default {
                 date: [value.date],
                 hash: [value.hash],
                 text: [value.text],
-              })
+              });
             } else {
-              this.offers[index].date.push(value.date)
-              this.offers[index].hash.push(value.hash)
-              this.offers[index].text.push(value.text)
+              this.offers[index].date.push(value.date);
+              this.offers[index].hash.push(value.hash);
+              this.offers[index].text.push(value.text);
             }
           }
         }
-      })
+      });
 
-      document.querySelectorAll('.sub-list > li').forEach((li) => {
-        li.classList.remove('active-offer')
-      })
+      document.querySelectorAll(".sub-list > li").forEach((li) => {
+        li.classList.remove("active-offer");
+      });
     },
 
     // display selected offer
     showOffer() {
       // clear status for new selection
-      this.status = 'Un-verified'
-      let info = event.target.innerHTML
-      let infoArr = info.split('|')
-      this.key = infoArr[0].trim() + '|' + infoArr[1].trim()
+      this.status = "Un-verified";
+      let info = event.target.innerHTML;
+      let infoArr = info.split("|");
+      this.key = infoArr[0].trim() + "|" + infoArr[1].trim();
       // find & display offer for key
       this.entries.forEach((entry) => {
         if (entry[0] === this.key) {
-          let data = JSON.parse(entry[1])
-          let rows = data.text.split('\n')
-          this.csv = []
-          this.csv.push(...rows)
-          this.hash = data.hash
+          let data = JSON.parse(entry[1]);
+          let rows = data.text.split("\n");
+          this.csv = [];
+          this.csv.push(...rows);
+          this.hash = data.hash;
         }
-      })
+      });
 
       // removing the background color for ul-selected items
-      document.querySelectorAll('.sub-list > li').forEach((li) => {
-        li.classList.remove('active-offer')
-      })
+      document.querySelectorAll(".sub-list > li").forEach((li) => {
+        li.classList.remove("active-offer");
+      });
       // add background to selected account
-      event.target.classList.add('active-offer')
+      event.target.classList.add("active-offer");
     },
 
     // verifiy selected offer
     async verify() {
-      let url = 'http://127.0.0.1:3001/api/offers/proof'
+      let url = "http://127.0.0.1:3001/api/offers/proof";
       // retrieve username and date from selected key
-      let user = this.key.split('|')
-      let username = user[0]
-      let date = user[1]
-      let leaf = this.hash
+      let user = this.key.split("|");
+      let username = user[0];
+      this.date = user[1];
+      let leaf = this.hash;
 
-      const tree = new MerkleTree([], SHA256)
-      let root = await this.getRootHash(date)
-      root = root[0]
-      axios
-        .get(url, {
-          params: {
-            username: username,
-            date: date,
-          },
-        })
-        .then((res) => {
-          if ('message' in res.data) {
-            this.status = 'Hash Not Found'
-          } else {
-            //let proof = res.data.pf
-            const proof = res.data.map((object) => {
-              object.data = Buffer.from(object.data.data)
-              return object
-            })
-            const result = tree.verify(proof, leaf, root)
-            if (result) {
-              this.status = 'Verified'
+      const tree = new MerkleTree([], SHA256);
+      let root = await this.getRootHash(this.date);
+      if (root[0] != "") {
+        this.rootHashError = false;
+        root = root[0];
+        axios
+          .get(url, {
+            params: {
+              username: username,
+              date: this.date,
+            },
+          })
+          .then((res) => {
+            if ("message" in res.data) {
+              this.status = "Hash Not Found";
             } else {
-              this.status = 'Verification Failed'
+              //let proof = res.data.pf
+              const proof = res.data.map((object) => {
+                object.data = Buffer.from(object.data.data);
+                return object;
+              });
+              const result = tree.verify(proof, leaf, root);
+              if (result) {
+                this.status = "Verified";
+              } else {
+                this.status = "Verification Failed";
+              }
             }
-          }
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        this.rootHashError = true;
+      }
     },
 
     // get merkle root hash
     async getRootHash(timestamp) {
-      let root = await this.contract.methods.getHash(timestamp).call()
-      return root
+      let root = await this.contract.methods.getHash(timestamp).call();
+      return root;
     },
   },
 
   async created() {
-    this.contract = await Contract()
-    this.getOffers()
+    this.contract = await Contract();
+    this.getOffers();
+    //this.getRootHash('2020-08-28')
   },
-}
+};
 </script>
 
 <style>
