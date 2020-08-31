@@ -34,7 +34,7 @@
       <div class="hash" v-tooltip="hash">
         <div class="content-header">
           <h4>Hash</h4>
-          <span>{{ status }}</span>
+          <span :class="classObject" class="badge">{{ status }}</span>
         </div>
         {{ hash }}
       </div>
@@ -85,7 +85,20 @@ export default {
       hash: "",
       status: "Un-verified",
       rootHashError: "",
+      // notifications
+      isFound: "",
+      isFailed: "",
+      isVerified: "",
     };
+  },
+  computed: {
+    classObject: function () {
+      return {
+        verified: this.isFound && this.isVerified && !this.isFailed,
+        warning: !this.isFound && !this.isVerified && !this.isFailed,
+        failed: this.isFound && !this.isVerified && this.isFailed,
+      };
+    },
   },
   methods: {
     // get locally stored offers
@@ -104,10 +117,7 @@ export default {
 
     // keep record of offers for a user
     currentOffer() {
-      this.hash = "";
-      this.csv = [];
-      this.offers = [];
-      this.rootHashError = false;
+      this.reset();
       this.entries.forEach((entry) => {
         if (entry[0] != "loglevel:webpack-dev-server") {
           let value = JSON.parse(entry[1]);
@@ -142,6 +152,10 @@ export default {
     showOffer() {
       // clear status for new selection
       this.status = "Un-verified";
+      this.rootHashError = "";
+      this.isVerified = false;
+      this.isFailed = false;
+      this.isFound = false;
       let info = event.target.innerHTML;
       let infoArr = info.split("|");
       this.key = infoArr[0].trim() + "|" + infoArr[1].trim();
@@ -188,6 +202,7 @@ export default {
           .then((res) => {
             if ("message" in res.data) {
               this.status = "Hash Not Found";
+              this.isFound = false;
             } else {
               //let proof = res.data.pf
               const proof = res.data.map((object) => {
@@ -197,8 +212,14 @@ export default {
               const result = tree.verify(proof, leaf, root);
               if (result) {
                 this.status = "Verified";
+                this.isVerified = true;
+                this.isFailed = false;
+                this.isFound = true;
               } else {
                 this.status = "Verification Failed";
+                this.isFailed = true;
+                this.isVerified = false;
+                this.isFound = true;
               }
             }
           })
@@ -214,6 +235,16 @@ export default {
     async getRootHash(timestamp) {
       let root = await this.contract.methods.getHash(timestamp).call();
       return root;
+    },
+
+    reset() {
+      this.hash = "";
+      this.csv = [];
+      this.offers = [];
+      this.rootHashError = false;
+      this.isFound = "";
+      this.isFailed = "";
+      this.isVerified = "";
     },
   },
 
@@ -292,9 +323,20 @@ select {
   margin-bottom: 1rem;
 }
 
-span {
-  background: lightcoral;
-  padding: 0.7rem 0.5rem;
+.badge {
+  padding: 0.8rem 0.5rem;
+}
+
+.verified {
+  background: rgb(128, 240, 137);
+}
+
+.warning {
+  background: rgb(240, 191, 128);
+}
+
+.failed {
+  background: rgb(233, 95, 95);
 }
 
 .hash,
