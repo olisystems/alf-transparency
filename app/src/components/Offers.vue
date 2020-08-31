@@ -31,12 +31,12 @@
     </div>
 
     <div v-if="csv.length > 0" class="contents">
-      <div class="hash" v-tooltip="hash">
+      <div class="hash">
         <div class="content-header">
           <h4>Hash</h4>
           <span :class="classObject" class="badge">{{ status }}</span>
         </div>
-        {{ hash }}
+        <div v-tooltip="hash" class="hash">{{ hash }}</div>
       </div>
 
       <div class="csv">
@@ -321,6 +321,12 @@ select {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
+}
+
+.hash{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .badge {
