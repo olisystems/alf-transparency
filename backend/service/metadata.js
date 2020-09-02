@@ -1,4 +1,4 @@
-const ADDRESS = "0x853C6fD7a789Fc83935f7cD009530b80A9e492AC";
+const ADDRESS = "0x5980Ad3f60ef38BAdC7dE9542f55A425C482fdCf";
 const ABI = [
   {
     inputs: [],
@@ -15,7 +15,12 @@ const ABI = [
         name: "rootHash",
         type: "string",
       },
-      { indexed: false, internalType: "string", name: "user", type: "string" },
+      {
+        indexed: false,
+        internalType: "string",
+        name: "user",
+        type: "string",
+      },
       {
         indexed: false,
         internalType: "string",
@@ -30,7 +35,13 @@ const ABI = [
     constant: true,
     inputs: [],
     name: "owner",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
     payable: false,
     stateMutability: "view",
     type: "function",
@@ -38,9 +49,21 @@ const ABI = [
   {
     constant: false,
     inputs: [
-      { internalType: "string", name: "_rootHash", type: "string" },
-      { internalType: "string", name: "_user", type: "string" },
-      { internalType: "string", name: "_timestamp", type: "string" },
+      {
+        internalType: "string",
+        name: "_rootHash",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "_user",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "_timestamp",
+        type: "string",
+      },
     ],
     name: "sendHash",
     outputs: [],
@@ -50,11 +73,25 @@ const ABI = [
   },
   {
     constant: true,
-    inputs: [{ internalType: "string", name: "_timestamp", type: "string" }],
+    inputs: [
+      {
+        internalType: "string",
+        name: "_timestamp",
+        type: "string",
+      },
+    ],
     name: "getHash",
     outputs: [
-      { internalType: "string", name: "", type: "string" },
-      { internalType: "string", name: "", type: "string" },
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
     ],
     payable: false,
     stateMutability: "view",
