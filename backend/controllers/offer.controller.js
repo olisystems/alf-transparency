@@ -167,9 +167,8 @@ exports.storeRootHash = (req, res) => {
           res.send(response);
         })
         .catch((err) => {
-          console.log(err);
           res.send({
-            message: `Root Hash for date ${query} could not be stored on-chain.`,
+            message: `Root Hash for date ${query} is already stored on-chain.`,
             err: err.message,
           });
         });
