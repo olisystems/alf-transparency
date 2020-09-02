@@ -1,5 +1,4 @@
 const db = require("../models");
-const ALFTransparency = require("./ALFTransparency.controller");
 const Offer = db.offers;
 const { MerkleTree } = require("merkletreejs");
 const SHA256 = require("crypto-js/sha256");
