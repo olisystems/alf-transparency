@@ -34,7 +34,13 @@
       <div class="hash">
         <div class="content-header">
           <h4>Hash</h4>
-          <span :class="classObject" class="badge">{{ status }}</span>
+          <button
+            type="button"
+            :class="classObject"
+            class="badge"
+            @click="test"
+            :disabled="!isVerified"
+          >{{ status }}</button>
         </div>
         <div v-tooltip="hash" class="hash">{{ hash }}</div>
       </div>
@@ -176,6 +182,21 @@ export default {
       });
       // add background to selected account
       event.target.classList.add("active-offer");
+    },
+
+    test() {
+      this.contract.events
+        .NewHash({
+          fromBlock: 0,
+        })
+        .on("data", (event) => {
+          if (this.date == event.returnValues.timestamp) {
+            let hash = event.transactionHash;
+            let url = `https://volta-explorer.energyweb.org/tx/${hash}/internal_transactions`;
+            window.open(url);
+          }
+        })
+        .on("error", console.error);
     },
 
     // verifiy selected offer
@@ -323,18 +344,23 @@ select {
   margin-bottom: 1rem;
 }
 
-.hash{
+.hash {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .badge {
+  border: none;
+  outline: none;
+  color: #2c3e50;
   padding: 0.8rem 0.5rem;
+  font-weight: bold;
 }
 
 .verified {
   background: rgb(128, 240, 137);
+  cursor: pointer;
 }
 
 .warning {
