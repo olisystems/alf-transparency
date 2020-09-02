@@ -38,7 +38,7 @@
             type="button"
             :class="classObject"
             class="badge"
-            @click="test"
+            @click="getHashEvents"
             :disabled="!isVerified"
           >{{ status }}</button>
         </div>
@@ -184,7 +184,7 @@ export default {
       event.target.classList.add("active-offer");
     },
 
-    test() {
+    getHashEvents() {
       this.contract.events
         .NewHash({
           fromBlock: 0,
