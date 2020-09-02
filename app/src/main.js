@@ -8,6 +8,7 @@ import VueRouter from 'vue-router'
 import routes from './routes'
 
 import './assets/css/navbar.css'
+import 'v-tooltip/dist/v-tooltip.css'
 
 Vue.use(SmartTable)
 Vue.config.productionTip = false

@@ -14,7 +14,7 @@
           <router-link to="/offers">Offers</router-link>
         </li>
         <li>
-          <router-link to="/verification">Verification</router-link>
+          <router-link to="/admin">Admin</router-link>
         </li>
       </ul>
     </div>
@@ -24,13 +24,13 @@
 
 <script>
 export default {
-  name: 'app',
-}
+  name: "app",
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -40,7 +40,7 @@ export default {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #333;
   background-color: #f3f3f3;
   width: 100%;

@@ -1,11 +1,11 @@
 import CreateOffer from './components/CreateOffer.vue'
 import Offers from './components/Offers.vue'
-import Verification from './components/Verification.vue'
+import Admin from './components/Admin.vue'
 
 const routes = [
   { path: '/', component: CreateOffer },
   { path: '/offers', component: Offers },
-  { path: '/verification', component: Verification },
+  { path: '/admin', component: Admin },
 ]
 
 export default routes
