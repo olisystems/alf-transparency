@@ -59,7 +59,7 @@ import web3 from "@/assets/js/web3";
 import Contract from "@/assets/js/contractInstance";
 
 export default {
-  name: "Verification",
+  name: "Admin",
   data() {
     return {
       contract: "",
