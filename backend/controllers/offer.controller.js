@@ -1,10 +1,10 @@
-const db = require('../models')
-const ALFTransparency = require('./ALFTransparency.controller')
-const Offer = db.offers
-const { MerkleTree } = require('merkletreejs')
-const SHA256 = require('crypto-js/sha256')
-const Base64 = require('crypto-js/enc-base64')
-const Contract = require('../service/blockchain')
+const db = require("../models");
+const ALFTransparency = require("./ALFTransparency.controller");
+const Offer = db.offers;
+const { MerkleTree } = require("merkletreejs");
+const SHA256 = require("crypto-js/sha256");
+const Base64 = require("crypto-js/enc-base64");
+const Contract = require("../service/blockchain");
 
 // create and save a new Offer
 exports.create = (req, res) => {
@@ -12,57 +12,57 @@ exports.create = (req, res) => {
     username: req.body.username,
     date: req.body.date,
     hash: req.body.hash,
-  })
+  });
 
   // save offer to the db
   offer
     .save(offer)
     .then((data) => {
-      res.send(data)
+      res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || 'Some error occurred while creating the Offer.',
-      })
-    })
-}
+        message: err.message || "Some error occurred while creating the Offer.",
+      });
+    });
+};
 
 // Retrieve all Offers from the database.
 exports.findAll = (err, res) => {
   Offer.find()
     .then((data) => {
-      res.send(data)
+      res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || 'Some error occurred while retrieving offers.',
-      })
-    })
-}
+        message: err.message || "Some error occurred while retrieving offers.",
+      });
+    });
+};
 
 // Find Offer by username
 exports.findByUsername = (req, res) => {
-  const username = req.query.username
+  const username = req.query.username;
 
   Offer.find({ username: username })
     .then((data) => {
       if (data.length === 0)
         res.status(404).send({
           message: `Offer not found with username: ${username}`,
-        })
-      else res.send(data)
+        });
+      else res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
         message: `Offer not found with username: ${username}`,
-      })
-    })
-}
+      });
+    });
+};
 
 // Find Offer by username and date
 exports.findByUsernameDate = (req, res) => {
-  const username = req.query.username
-  const date = req.query.date
+  const username = req.query.username;
+  const date = req.query.date;
 
   Offer.find({
     username: username,
@@ -72,20 +72,20 @@ exports.findByUsernameDate = (req, res) => {
       if (data.length === 0)
         res.status(404).send({
           message: `Offer not found with username: ${username} and date: ${date}`,
-        })
-      else res.send(data)
+        });
+      else res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
         message: `Offer not found with username: ${username} and date: ${date}`,
-      })
-    })
-}
+      });
+    });
+};
 
 // Proof of Concept controller functions
 exports.getHash = (req, res) => {
-  const username = req.query.username
-  const date = req.query.date
+  const username = req.query.username;
+  const date = req.query.date;
   // Find first offer with given username & date
   Offer.findOne({
     username: username,
@@ -96,19 +96,19 @@ exports.getHash = (req, res) => {
       if (!data)
         res.status(404).send({
           message: `Hash not found with username: ${username} and date: ${date}`,
-        })
-      else res.send(data.hash)
+        });
+      else res.send(data.hash);
     })
     .catch((err) => {
       res.status(500).send({
         message: `Hash not found with username: ${username} and date: ${date}`,
-      })
-    })
-}
+      });
+    });
+};
 
 exports.getProof = (req, res) => {
-  const username = req.query.username
-  const date = req.query.date
+  const username = req.query.username;
+  const date = req.query.date;
 
   Offer.find({
     date: date,
@@ -116,31 +116,31 @@ exports.getProof = (req, res) => {
     .then((data) => {
       // Find offer with specified username
       const leaf = data.find((data) => {
-        return data.username == username
-      }).hash
+        return data.username == username;
+      }).hash;
 
       // Extract offers from data and create leaves
       const leaves = data.map((leaf) => {
-        return leaf.hash
-      })
+        return leaf.hash;
+      });
 
       // Create tree
-      const tree = new MerkleTree(leaves, SHA256)
+      const tree = new MerkleTree(leaves, SHA256);
 
       // Get proof
       // Return empty array for single leaf tree & for bad leaf!
-      const proof = tree.getProof(leaf)
-      res.send(proof)
+      const proof = tree.getProof(leaf);
+      res.send(proof);
     })
     .catch((err) => {
       res.send({
         message: `No hash found with username: ${username} and date: ${date}`,
-      })
-    })
-}
+      });
+    });
+};
 
 exports.storeRootHash = (req, res) => {
-  const query = req.query.date
+  const query = req.query.date;
   Offer.find({
     date: query,
   })
@@ -148,35 +148,35 @@ exports.storeRootHash = (req, res) => {
       if (!data.length) {
         res.send({
           message: `Offers not found for date: ${query}.`,
-        })
-        return
+        });
+        return;
       }
 
       // Extract offers from data and create leaves
       const leaves = data.map((leaf) => {
-        return leaf.hash
-      })
-      const tree = new MerkleTree(leaves, SHA256)
-      const rootHash = tree.getHexRoot()
-      const address = '0x1492c3f6675867b77fF3Cd8252C2B8e943dA3E2c'
+        return leaf.hash;
+      });
+      const tree = new MerkleTree(leaves, SHA256);
+      const rootHash = tree.getHexRoot();
+      const address = "0x3D481ee06aFe587dAe5EAFA541c75c3D1F9dCdBc";
 
       Contract.methods
-        .sendHash(rootHash, 'ALF_Demo', query)
+        .sendHash(rootHash, "ALF_Demo", query)
         .send({ from: address, gas: 3000000 })
         .then((response) => {
-          res.send(response)
+          res.send(response);
         })
         .catch((err) => {
-          console.log(err)
+          console.log(err);
           res.send({
             message: `Root Hash for date ${query} could not be stored on-chain.`,
             err: err.message,
-          })
-        })
+          });
+        });
     })
     .catch((err) => {
       res.send({
         message: `Error in storing offer for date: ${date}`,
-      })
-    })
-}
+      });
+    });
+};
