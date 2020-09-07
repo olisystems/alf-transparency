@@ -38,6 +38,7 @@ module.exports = {
       port: 7546,
       network_id: 73799,
       websockets: true,
+      from: "0x3D481ee06aFe587dAe5EAFA541c75c3D1F9dCdBc",
     },
   },
 
