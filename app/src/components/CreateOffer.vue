@@ -149,7 +149,7 @@ export default {
     },
 
     postOffer(offer) {
-      let url = 'http://127.0.0.1:3001/api/offers/'
+      let url = 'http://80.158.20.81:3000/api/offers/'
       axios
         .post(url, offer)
         .then((response) => {
