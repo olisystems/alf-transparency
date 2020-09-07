@@ -2750,12 +2750,12 @@
         }
       },
       "links": {},
-      "address": "0x5980Ad3f60ef38BAdC7dE9542f55A425C482fdCf",
-      "transactionHash": "0x73665113c0db3cbeebab7fe1877ef25166981134cc402b3f3921ccd8c224b1fe"
+      "address": "0x607BFaA06d44bb883c951bAaB6dcCB65FB0bde24",
+      "transactionHash": "0x035fa8aa3256fc4656a8e0e7bfdeb78b60adb577ccc1865d482ce5c07532b218"
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2020-09-02T14:14:46.734Z",
+  "updatedAt": "2020-09-07T07:44:56.072Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "store Merkle root hash on the blockchain",

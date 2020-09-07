@@ -71,6 +71,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 const { MerkleTree } = require("merkletreejs");
 const SHA256 = require("crypto-js/sha256");
 const axios = require("axios");
@@ -201,7 +202,7 @@ export default {
 
     // verifiy selected offer
     async verify() {
-      let url = "http://127.0.0.1:3001/api/offers/proof";
+      let url = "http://80.158.20.81:3000/api/offers/proof";
       // retrieve username and date from selected key
       let user = this.key.split("|");
       let username = user[0];

@@ -1,5 +1,5 @@
 // configurations for database
 
 module.exports = {
-  url: 'mongodb://localhost:27017/alf_db',
-}
+  url: "mongodb://olisystems:alfolisystems@80.158.20.81:27017/alf_db",
+};
