@@ -6,13 +6,7 @@
         <!-- input username -->
         <label>
           <!-- Username: -->
-          <input
-            type="text"
-            id="username"
-            v-model="username"
-            placeholder="Enter username"
-            required
-          />
+          <input type="text" id="username" v-model="username" placeholder="Enter username" required />
         </label>
         <!-- input date -->
         <label>
@@ -29,13 +23,7 @@
         <!-- input file -->
         <label>
           <!-- File: -->
-          <input
-            type="file"
-            id="file"
-            ref="file"
-            @change="handleFileUpload"
-            required
-          />
+          <input type="file" id="file" ref="file" @change="handleFileUpload" required />
         </label>
         <button class="button" type="submit">Upload</button>
       </form>
@@ -48,8 +36,7 @@
           <span aria-hidden="true">&#10005;</span>
         </button>
         <strong>Success!</strong>
-        <br />
-        The file
+        <br />The file
         <i>
           <b>{{ name }}</b>
         </i>
@@ -66,8 +53,7 @@
           <span aria-hidden="true">&#10005;</span>
         </button>
         <strong>Error!</strong>
-        <br />
-        Failed to upload file
+        <br />Failed to upload file
         <i>
           <b>{{ name }}</b>
         </i>
@@ -78,111 +64,111 @@
 </template>
 
 <script>
-const SHA256 = require('crypto-js/sha256')
-const axios = require('axios')
+const SHA256 = require("crypto-js/sha256");
+const axios = require("axios");
 
 export default {
-  name: 'CreateOffer',
+  name: "CreateOffer",
 
   data() {
     return {
-      date: '',
-      file: '',
-      hash: '',
-      name: '',
-      dateFormat: 'dd-mm-yyyy',
-      dbResponse: '',
-      username: '',
-      isUploaded: '',
-      isFailed: '',
-      style: 'hidden',
-    }
+      date: "",
+      file: "",
+      hash: "",
+      name: "",
+      dateFormat: "dd-mm-yyyy",
+      dbResponse: "",
+      username: "",
+      isUploaded: "",
+      isFailed: "",
+      style: "hidden",
+    };
   },
 
   methods: {
     handleFileUpload() {
-      let file = this.$refs.file.files[0]
+      let file = this.$refs.file.files[0];
       // extract file name
-      this.name = file.name
+      this.name = file.name;
       // hide the message to avoid having
       // unloaded file name
-      this.isUploaded = false
+      this.isUploaded = false;
       // check validity of CSV file
-      if (!file || file.type !== 'text/csv') {
-        this.isUploaded = false
-        this.isFailed = true
-        this.reset()
+      if (!file || file.type !== "text/csv") {
+        this.isUploaded = false;
+        this.isFailed = true;
+        this.reset();
       }
 
       // invoke FileReader constructor
-      const reader = new FileReader()
+      const reader = new FileReader();
       // read file
-      reader.readAsText(file, 'UTF-8')
+      reader.readAsText(file, "UTF-8");
 
       // attach handler for load event
       reader.onload = (evt) => {
         // save the raw contents
-        this.file = evt.target.result
+        this.file = evt.target.result;
         // create hash
-        this.hash = SHA256(this.file).toString()
-      }
+        this.hash = SHA256(this.file).toString();
+      };
 
       // attach handler for error event
       reader.onerror = (evt) => {
-        alert('Failed to read file!\n\n' + reader.error)
-        reader.abort()
-      }
+        alert("Failed to read file!\n\n" + reader.error);
+        reader.abort();
+      };
     },
 
     saveOffer() {
-      let key = this.username + '|' + this.date
+      let key = this.username + "|" + this.date;
       let offer = {
         username: this.username,
         date: this.date,
         text: this.file,
         hash: this.hash,
-      }
-      this.postOffer(offer)
-      offer = JSON.stringify(offer)
+      };
+      this.postOffer(offer);
+      offer = JSON.stringify(offer);
 
-      window.localStorage.setItem(key, offer)
+      window.localStorage.setItem(key, offer);
     },
 
     postOffer(offer) {
-      let url = 'http://80.158.20.81:3000/api/offers/'
+      let url = "http://80.158.20.81:3000/api/offers/";
       axios
         .post(url, offer)
         .then((response) => {
           this.dbResponse = {
             code: response.status,
             status: response.statusText,
-          }
+          };
         })
         .catch((error) => {
-          console.log(error)
-        })
+          console.log(error);
+        });
     },
 
     submitFile() {
-      this.isFailed = false
-      this.isUploaded = true
-      this.saveOffer()
-      this.reset()
+      this.isFailed = false;
+      this.isUploaded = true;
+      this.saveOffer();
+      this.reset();
     },
 
     reset() {
-      this.hash = ''
-      this.date = ''
-      this.username = ''
-      this.$refs.file.value = null
+      this.hash = "";
+      this.date = "";
+      this.username = "";
+      this.$refs.file.value = null;
     },
 
     close() {
-      this.isUploaded = false
-      this.isFailed = false
+      this.isUploaded = false;
+      this.isFailed = false;
     },
   },
-}
+};
 </script>
 
 <style>
@@ -252,6 +238,7 @@ input {
 }
 
 .error {
+  color: #fff;
   background: rgb(233, 95, 95);
 }
 

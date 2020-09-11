@@ -191,7 +191,7 @@ export default {
           fromBlock: 0,
         })
         .on("data", (event) => {
-          if (this.date == event.returnValues.timestamp) {
+          if (this.date == event.returnValues.date) {
             let hash = event.transactionHash;
             let url = `https://volta-explorer.energyweb.org/tx/${hash}/internal_transactions`;
             window.open(url);
