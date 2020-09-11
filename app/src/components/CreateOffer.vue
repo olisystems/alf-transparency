@@ -64,6 +64,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 const SHA256 = require("crypto-js/sha256");
 const axios = require("axios");
 
