@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="navbar">
-      <a href class="logo">ALF Transparency Market</a>
+      <a href class="logo">ALF Transparency</a>
       <input class="menu-btn" type="checkbox" id="menu-btn" />
       <label class="menu-icon" for="menu-btn">
         <span class="navicon"></span>
