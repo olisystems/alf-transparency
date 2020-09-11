@@ -1,101 +1,96 @@
-const ADDRESS = "0x607BFaA06d44bb883c951bAaB6dcCB65FB0bde24";
+const ADDRESS = "0xa2Cefe0Dd23e0c19e57F6A27a3b0990fc49be7eE";
 const ABI = [
   {
-    inputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "constructor",
+    "inputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: false,
-        internalType: "string",
-        name: "rootHash",
-        type: "string",
+        "indexed": false,
+        "internalType": "string",
+        "name": "rootHash",
+        "type": "string"
       },
       {
-        indexed: false,
-        internalType: "string",
-        name: "user",
-        type: "string",
+        "indexed": false,
+        "internalType": "string",
+        "name": "date",
+        "type": "string"
       },
       {
-        indexed: false,
-        internalType: "string",
-        name: "timestamp",
-        type: "string",
-      },
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
     ],
-    name: "NewHash",
-    type: "event",
+    "name": "NewHash",
+    "type": "event"
   },
   {
-    constant: true,
-    inputs: [],
-    name: "owner",
-    outputs: [
+    "constant": true,
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
       {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
     ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    constant: false,
-    inputs: [
+    "constant": false,
+    "inputs": [
       {
-        internalType: "string",
-        name: "_rootHash",
-        type: "string",
+        "internalType": "string",
+        "name": "_rootHash",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "_user",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_timestamp",
-        type: "string",
-      },
+        "internalType": "string",
+        "name": "_date",
+        "type": "string"
+      }
     ],
-    name: "sendHash",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
+    "name": "sendHash",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    constant: true,
-    inputs: [
+    "constant": true,
+    "inputs": [
       {
-        internalType: "string",
-        name: "_timestamp",
-        type: "string",
-      },
+        "internalType": "string",
+        "name": "_date",
+        "type": "string"
+      }
     ],
-    name: "getHash",
-    outputs: [
+    "name": "getHash",
+    "outputs": [
       {
-        internalType: "string",
-        name: "",
-        type: "string",
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       },
       {
-        internalType: "string",
-        name: "",
-        type: "string",
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  }
 ];
 module.exports = { ADDRESS, ABI };
