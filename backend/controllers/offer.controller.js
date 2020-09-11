@@ -160,7 +160,7 @@ exports.storeRootHash = (req, res) => {
       const address = "0x3D481ee06aFe587dAe5EAFA541c75c3D1F9dCdBc";
 
       Contract.methods
-        .sendHash(rootHash, "ALF_Demo", query)
+        .sendHash(rootHash, query)
         .send({ from: address, gas: 3000000 })
         .then((response) => {
           res.send(response);
