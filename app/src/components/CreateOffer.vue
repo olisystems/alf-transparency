@@ -91,11 +91,12 @@ export default {
       let file = this.$refs.file.files[0];
       // extract file name
       this.name = file.name;
+      let extension = file.name.split(".").pop();
       // hide the message to avoid having
       // unloaded file name
       this.isUploaded = false;
       // check validity of CSV file
-      if (!file || file.type !== "text/csv") {
+      if (!file || extension != "csv") {
         this.isUploaded = false;
         this.isFailed = true;
         this.reset();
