@@ -41,6 +41,7 @@
           <b>{{ name }}</b>
         </i>
         is successfully saved to local storage!
+        <br />The database response is:
         <br />
         {{ dbResponse.code }}, {{ dbResponse.status }}
       </div>
@@ -137,7 +138,7 @@ export default {
     },
 
     postOffer(offer) {
-      let url = "http://80.158.20.81:3000/api/offers/";
+      let url = "http://80.158.47.134:3000/api/offers/";
       axios
         .post(url, offer)
         .then((response) => {

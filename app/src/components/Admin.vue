@@ -53,6 +53,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 const $ = require("jquery");
 const axios = require("axios");
 import web3 from "@/assets/js/web3";
@@ -79,7 +80,7 @@ export default {
     async sendRootHash() {
       $(".loader").show();
       this.reset();
-      let url = "http://80.158.20.81:3000/api/offers/rootHashTrigger";
+      let url = "http://80.158.47.134:3000/api/offers/rootHashTrigger";
       axios
         .get(url, {
           params: {

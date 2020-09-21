@@ -202,7 +202,7 @@ export default {
 
     // verifiy selected offer
     async verify() {
-      let url = "http://80.158.20.81:3000/api/offers/proof";
+      let url = "http://80.158.47.134:3000/api/offers/proof";
       // retrieve username and date from selected key
       let user = this.key.split("|");
       let username = user[0];
