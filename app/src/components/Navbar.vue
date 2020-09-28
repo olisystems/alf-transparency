@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <a href class="logo">ALF Transparency Market</a>
+    <a href class="logo">ALF Transparency</a>
     <input class="menu-btn" type="checkbox" id="menu-btn" />
     <label class="menu-icon" for="menu-btn">
       <span class="navicon"></span>
@@ -20,12 +20,12 @@
 </template>
 <script>
 export default {
-  name: 'Navbar',
+  name: "Navbar",
   data() {
-    return {}
+    return {};
   },
   methods: {},
-}
+};
 </script>
 <style scoped>
 .navbar {
@@ -101,7 +101,7 @@ a {
 .navbar .menu-icon .navicon:before,
 .navbar .menu-icon .navicon:after {
   background: white;
-  content: '';
+  content: "";
   display: block;
   height: 100%;
   position: absolute;

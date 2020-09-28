@@ -16,7 +16,7 @@ contract ALFTransparency {
     /// create Hash struct with three fields
     struct Hash {
         string rootHash;
-        string user;
+        uint256 timestamp;
         bool stored;
     }
 
@@ -27,7 +27,7 @@ contract ALFTransparency {
     }
 
     /// @notice event fired when a hash is sent
-    event NewHash(string rootHash, string user, string timestamp);
+    event NewHash(string rootHash, string date, uint256 timestamp);
 
     /// @notice map timestamp to Hash struct
     mapping(string => Hash) private hashes;
@@ -35,27 +35,25 @@ contract ALFTransparency {
     /// @notice send Merkle root hash and username
     /// @dev fire the event when hash is sent
     /// @param _rootHash Merkle root hash
-    /// @param _user username
-    /// @param _timestamp timestamp when the root hash was created
-    function sendHash(
-        string memory _rootHash,
-        string memory _user,
-        string memory _timestamp
-    ) public onlyOwner {
-        require(!hashes[_timestamp].stored, "Hash is already stored.");
-        hashes[_timestamp] = Hash(_rootHash, _user, true);
-        emit NewHash(_rootHash, _user, _timestamp);
+    /// @param _date date when the root hash was created
+    function sendHash(string memory _rootHash, string memory _date)
+        public
+        onlyOwner
+    {
+        require(!hashes[_date].stored, "Hash is already stored.");
+        hashes[_date] = Hash(_rootHash, now, true);
+        emit NewHash(_rootHash, _date, now);
     }
 
-    /// @notice get the hash for a given timestamp
+    /// @notice get the hash for a given date
     /// @dev returns the root hash for a given timestamp
-    /// @param _timestamp when the root hash was created
-    /// @return root Merkle root hash and username
-    function getHash(string memory _timestamp)
+    /// @param _date day for which the root hash was created
+    /// @return root Merkle root hash and timestamp
+    function getHash(string memory _date)
         public
         view
-        returns (string memory, string memory)
+        returns (string memory, uint256)
     {
-        return (hashes[_timestamp].rootHash, hashes[_timestamp].user);
+        return (hashes[_date].rootHash, hashes[_date].timestamp);
     }
 }

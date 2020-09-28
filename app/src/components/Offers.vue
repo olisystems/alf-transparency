@@ -191,9 +191,9 @@ export default {
           fromBlock: 0,
         })
         .on("data", (event) => {
-          if (this.date == event.returnValues.timestamp) {
+          if (this.date == event.returnValues.date) {
             let hash = event.transactionHash;
-            let url = `https://volta-explorer.energyweb.org/tx/${hash}/internal_transactions`;
+            let url = `https://explorer.anyblock.tools/ethereum/ewf/volta/tx/${hash}/`;
             window.open(url);
           }
         })
@@ -202,7 +202,7 @@ export default {
 
     // verifiy selected offer
     async verify() {
-      let url = "http://80.158.20.81:3000/api/offers/proof";
+      let url = "https://verify.flexibilitaetsmarkt.de:3000/api/offers/proof";
       // retrieve username and date from selected key
       let user = this.key.split("|");
       let username = user[0];
