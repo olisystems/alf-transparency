@@ -1,4 +1,4 @@
-const ADDRESS = "0xa2Cefe0Dd23e0c19e57F6A27a3b0990fc49be7eE";
+const ADDRESS = "0xBcCeDf0fB39879B6253F659eE2bfE59f58552014";
 const ABI = [
   {
     "inputs": [],
@@ -93,4 +93,5 @@ const ABI = [
     "type": "function"
   }
 ];
+
 module.exports = { ADDRESS, ABI };
