@@ -138,7 +138,7 @@ export default {
     },
 
     postOffer(offer) {
-      let url = "http://80.158.47.134:3000/api/offers/";
+      let url = "https://verify.flexibilitaetsmarkt.de:3000/api/offers/";
       axios
         .post(url, offer)
         .then((response) => {

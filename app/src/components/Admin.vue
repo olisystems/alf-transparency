@@ -80,7 +80,8 @@ export default {
     async sendRootHash() {
       $(".loader").show();
       this.reset();
-      let url = "http://80.158.47.134:3000/api/offers/rootHashTrigger";
+      let url =
+        "https://verify.flexibilitaetsmarkt.de:3000/api/offers/rootHashTrigger";
       axios
         .get(url, {
           params: {
