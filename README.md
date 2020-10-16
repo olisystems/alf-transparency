@@ -1,7 +1,5 @@
 # ALF Transparency
 
-[![Build Status](https://travis-ci.org/olisystems/alf-transparency.svg?branch=master)](https://travis-ci.org/olisystems/alf-transparency)
-
 Implements an hashing dashboard on the basis of the ALF Transparency with Merkletree.js, Vue.js and the Ethereum netwrok
 
 [Demo](https://verify.flexibilitaetsmarkt.de/)
