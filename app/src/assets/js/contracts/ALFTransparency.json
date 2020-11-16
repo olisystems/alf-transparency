@@ -2693,12 +2693,12 @@
         }
       },
       "links": {},
-      "address": "0x23fAb51941656C5451E117A5d4815BAAC658e616",
-      "transactionHash": "0x22230040a7775edc32fdeb0fbd0f42048d0e2da198b29bd49362ed6ba88c8dac"
+      "address": "0xE3428E96f3b6dBE242c9798a918f69C2F439Fa82",
+      "transactionHash": "0x604985901151da8fec6090a6d513a886846d037b53839587bbf5ee40d18ffdba"
     }
   },
-  "schemaVersion": "3.2.5",
-  "updatedAt": "2020-10-16T09:17:30.608Z",
+  "schemaVersion": "3.3.2",
+  "updatedAt": "2020-11-16T12:20:05.425Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "store Merkle root hash on the blockchain",
