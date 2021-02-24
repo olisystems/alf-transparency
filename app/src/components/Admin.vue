@@ -56,7 +56,6 @@
 /* eslint-disable */
 const $ = require("jquery");
 const axios = require("axios");
-import web3 from "@/assets/js/web3";
 import Contract from "@/assets/js/contractInstance";
 
 export default {
