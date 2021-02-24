@@ -75,7 +75,6 @@
 const { MerkleTree } = require("merkletreejs");
 const SHA256 = require("crypto-js/sha256");
 const axios = require("axios");
-import web3 from "@/assets/js/web3";
 import Contract from "@/assets/js/contractInstance";
 export default {
   name: "Offers",
