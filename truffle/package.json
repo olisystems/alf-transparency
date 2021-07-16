@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "truffle test --network volta",
-    "migrate": "truffle migrate --reset --network voltaRPC",
+    "migrate": "truffle migrate --reset",
     "ganache": "ganache-cli -m 'vibrant leaf buyer satoshi carry bright silver must reject mix own hour'",
     "prettier": "prettier --write **/*.sol",
     "slint": "solhint \"contracts/**/*.sol\"",

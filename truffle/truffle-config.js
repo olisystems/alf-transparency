@@ -20,6 +20,7 @@ module.exports = {
       port: 8545,
       network_id: "*",
       websockets: true,
+      from: "0x4F525837E975D4Cc1bD9e87E27402902B625Bc22",
     },
 
     volta: {
@@ -54,10 +55,12 @@ module.exports = {
   },
   mocha: {
     enableTimeouts: false,
-    //   reporter: 'eth-gas-reporter',
-    //   reporterOptions: {
-    //     excludeContracts: ['Migrations'],
-    //     url: 'https://volta-rpc.energyweb.org',
-    //   },
+    reporter: "eth-gas-reporter",
+    reporterOptions: {
+      excludeContracts: ["Migrations"],
+      // url: 'https://volta-rpc.energyweb.org',
+
+      coinmarketcap: "8e3a1357-e3cf-47e2-9a86-d72cabcf6165",
+    },
   },
 };
